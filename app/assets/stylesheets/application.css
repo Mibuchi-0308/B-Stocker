@@ -17,11 +17,14 @@
   background-color: #009B48;
   width: 1000px;
   height: 120px;
+  display: flex;
+  align-items: center;
 }
 
 .B-Stocker {
   font-size: 55px;
   color: #fff;
   text-decoration: none;
-
+  float: left;
+  padding-left: 45px;
 }
