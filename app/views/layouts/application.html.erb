@@ -12,7 +12,12 @@
   <body>
     <div class="header-menu">
         <a href="/" class="B-Stocker">B-Stocker</a>
+        <div class="header-submenu">
+          <%= link_to("使い方", "/howto") %>        
+        </div>
     </div>
+
+
     <%= yield %>
   </body>
 </html>
