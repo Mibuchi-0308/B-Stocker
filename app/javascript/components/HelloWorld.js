@@ -3,7 +3,10 @@ import PropTypes from "prop-types"
 class HelloWorld extends React.Component {
   render () {
     return (
-      <h1>Hello B-Stocker!</h1>
+      <div>
+        <h1>Hello B-Stocker!</h1>
+        <h2>{this.props.name}さんがこちらに向かってきている…！おわりのはじまりさ</h2>
+      </div>
     );
   }
 }

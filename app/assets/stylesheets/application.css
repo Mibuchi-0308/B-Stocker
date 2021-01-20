@@ -13,20 +13,41 @@
  *= require_tree .
  *= require_self
  */
+body {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
 .header-menu {
   background-color: #009B48;
-  width: 1000px;
   height: 120px;
 }
 
 .B-Stocker {
   font-size: 55px;
-  color: #fff;
-  text-decoration: none;
-  padding-top: 20px;
+  color: white;
   padding-left: 45px;
 }
 
 .header-submenu {
+  text-decoration: none;
+  font-size: 30px;
   float: right;
+  color: white;
+  padding-right: 20px;
+}
+
+.header-submenu a {
+  color: white;
+}
+
+.header-submenu li {
+  float: left;
 }

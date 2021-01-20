@@ -7,14 +7,18 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
     <div class="header-menu">
-        <a href="/" class="B-Stocker">B-Stocker</a>
-        <div class="header-submenu">
-          <%= link_to("使い方", "/howto") %>        
-        </div>
+      <a href="/" class="B-Stocker">B-Stocker</a>
+      <div class="header-submenu">
+        <ul>
+          <li><%= link_to("使い方", "/howto") %></li>
+          <li><%= react_component('Login', {name: 'ログイン'}) %></li>
+        </ul>
+      </div>
     </div>
 
 
