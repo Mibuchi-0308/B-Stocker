@@ -34,6 +34,8 @@ ul {
   font-size: 55px;
   color: white;
   padding-left: 45px;
+  display: inline-block;
+  padding-top: 20px;
 }
 
 .header-submenu {
@@ -41,13 +43,30 @@ ul {
   font-size: 30px;
   float: right;
   color: white;
-  padding-right: 20px;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .header-submenu a {
   color: white;
+  display: inline-block;
 }
 
 .header-submenu li {
   float: left;
+  padding-right: 20px;
+}
+
+.hs-element {
+  display: inline-block;
+  margin: 0;
+}
+
+.hs-element p {
+  margin: 0;
+  display: inline-block;
+}
+
+.login-modal {
+  margin: 0 auto;
 }
