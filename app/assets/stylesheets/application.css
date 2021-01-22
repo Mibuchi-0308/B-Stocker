@@ -21,8 +21,14 @@ body {
 a {
   text-decoration: none;
 }
+
 ul {
   list-style: none;
+}
+
+h1 {
+  font-size: 50px;
+  margin: 0;
 }
 
 .header-menu {
