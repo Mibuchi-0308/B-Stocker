@@ -76,3 +76,41 @@ h1 {
 .login-modal {
   margin: 0 auto;
 }
+
+.login-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-inner {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  left: 0;
+  width: 480px;
+  padding-bottom: 60px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+.modal-header {
+  background-color: #56B55A;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-contents {
+
+}
+
+.modal-contents li {
+
+}

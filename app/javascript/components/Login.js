@@ -26,18 +26,24 @@ class Login extends React.Component {
     if (this.state.isModalOpen) {
       modal = (
         <div className="login-modal">
-          <h2>ログイン</h2>
-            <ul>
-              <li>メールアドレス</li>
-              <li><input /></li>
-              <li>パスワード</li>
-              <li><input /></li>
-            </ul>
-            <button>新規登録</button>
-            <button>ログイン</button>
-            <button onClick={() => {this.handleClickClose()}}>
-              とじる
-            </button>
+          <div className="modal-inner">
+            <div className="modal-header">
+              <h2>ログイン</h2>
+            </div>
+            <div className="modal-contents">
+              <ul>
+                <li>メールアドレス</li>
+                <li><input /></li>
+                <li>パスワード</li>
+                <li><input /></li>
+              </ul>
+              <button>新規登録</button>
+              <button>ログイン</button>
+              <button onClick={() => {this.handleClickClose()}}>
+                とじる
+              </button>
+            </div>
+          </div>
         </div>
       );}
 
@@ -48,16 +54,16 @@ class Login extends React.Component {
       //);
     //}
 
-    return (
-      <div>
-        <div
-          className="hs-element"
-          onClick={() => {this.handleClickOpen()}}>
-          <p>ログイン</p>
+      return (
+        <div>
+          <div
+            className="hs-element"
+            onClick={() => {this.handleClickOpen()}}>
+            <p>ログイン</p>
+            </div>
+            {modal}
         </div>
-        {modal}
-      </div>
-    );
+      );
   }
 }
 
