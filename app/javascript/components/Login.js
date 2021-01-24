@@ -31,17 +31,17 @@ class Login extends React.Component {
               <h2>ログイン</h2>
             </div>
             <div className="modal-contents">
-              <ul>
-                <li>メールアドレス</li>
-                <li><input /></li>
-                <li>パスワード</li>
-                <li><input /></li>
-              </ul>
-              <button>新規登録</button>
-              <button>ログイン</button>
-              <button onClick={() => {this.handleClickClose()}}>
-                とじる
-              </button>
+              <p>メールアドレス</p>
+              <input />
+              <p>パスワード</p>
+              <input />
+              <div>
+                <button>新規登録</button>
+                <button>ログイン</button>
+                <button onClick={() => {this.handleClickClose()}}>
+                  とじる
+                </button>
+              </div>
             </div>
           </div>
         </div>
