@@ -105,21 +105,48 @@ h1 {
 .modal-header {
   background-color: #56B55A;
   border-radius: 20px 20px 0 0;
+  display: flex;
+  align-items: flex-start;
+  height: 80px;
+  cursor: default;
 }
 
-.modal-header h2 {
+.modal-header p {
   margin: 0;
-  cursor: default;
+  padding-top: 11px;
+  padding-left: 30px;
+  font-size: 40px;
+}
+
+.modal-header img {
+  margin-left: 220px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .modal-contents {
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .modal-contents p {
-  padding-left: 50px;
   margin: 25px 0 0 0;
   color: #535353;
   font-size: 35px;
   cursor: default;
+}
+
+.modal-contents input {
+  height: 35px;
+  width: 370px;
+  font-size: 25px;
+}
+
+.modal-button {
+  display: flex;
+}
+
+.modal-button button {
+  flex: auto;
+  margin: 20px 20px 0 20px;
 }

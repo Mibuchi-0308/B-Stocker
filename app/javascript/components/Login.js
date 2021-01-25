@@ -28,20 +28,21 @@ class Login extends React.Component {
         <div className="login-modal">
           <div className="modal-inner">
             <div className="modal-header">
-              <h2>ログイン</h2>
+              <p>ログイン</p>
+              <img src="assets/modal/close.png"
+                   className="close-btn"
+                   onClick={() => {this.handleClickClose()}}
+              />
             </div>
             <div className="modal-contents">
               <p>メールアドレス</p>
               <input />
               <p>パスワード</p>
               <input />
-              <div>
+            </div>
+            <div className="modal-button">
                 <button>新規登録</button>
                 <button>ログイン</button>
-                <button onClick={() => {this.handleClickClose()}}>
-                  とじる
-                </button>
-              </div>
             </div>
           </div>
         </div>
