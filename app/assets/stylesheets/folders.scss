@@ -1,0 +1,21 @@
+// Place all the styles related to the folders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.folder-table {
+  height: 570px;
+  margin-top: 20px;
+  background-color: #F0F0F0;
+}
+
+.folder-table-header {
+  height: 70px;
+  background-color: #707070;
+  display: flex;
+  font-size: 35px;
+  p {
+    color: white;
+    margin: 0;
+    padding-top: 9px;
+    padding-left: 24px;
+  }
+}
