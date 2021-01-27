@@ -4,7 +4,17 @@
     <p>名前</p>
   </div>
   <div class="folder-table-contents">
-
+    <tr>
+      <th>名前</th>
+      <th>作成日</th>
+    </tr>
+    <% test_folders = [{name: "テスト名１", date: "2021-01-27"}, {name: "テスト名２", date: "2021-01-28"}] %>
+    <% test_folders.each do |folder|%>
+    <tr>
+      <td><%= folder[:name] %></td>
+      <td><%= folder[:date] %></td>
+    </tr>
+    <% end %>
   </div>
 
 </div>
