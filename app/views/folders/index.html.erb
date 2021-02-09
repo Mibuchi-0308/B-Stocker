@@ -1,20 +1,22 @@
 <h1>フォルダ一覧</h1>
 <div class="folder-table">
-  <div class="folder-table-header">
-    <p>名前</p>
-  </div>
-  <div class="folder-table-contents">
-    <tr>
-      <th>名前</th>
-      <th>作成日</th>
-    </tr>
-    <% test_folders = [{name: "テスト名１", date: "2021-01-27"}, {name: "テスト名２", date: "2021-01-28"}] %>
-    <% test_folders.each do |folder|%>
-    <tr>
-      <td><%= folder[:name] %></td>
-      <td><%= folder[:date] %></td>
-    </tr>
+  <table>
+    <thead>
+      <tr>
+        <th class="name">名前</th>
+        <th class="date">最終更新日</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% folder = {name: "テスト名１", date: "2021-01-27"} %>
+    <% i = 0 %>
+    <% while i <= 30 do %>
+      <tr>
+        <td class="name-value"><%= folder[:name] %></td>
+        <td class="date-value"><%= folder[:date] %></td>
+      </tr>
+    <% i += 1 %>
     <% end %>
-  </div>
-
+    </tbody>
+  </table>
 </div>
