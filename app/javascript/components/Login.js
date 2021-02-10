@@ -35,25 +35,20 @@ class Login extends React.Component {
               />
             </div>
             <div className="modal-contents">
+              <form>
               <p>メールアドレス</p>
-              <input />
+              <input type="email" />
               <p>パスワード</p>
-              <input />
+              <input type="password" />
+              </form>
             </div>
             <div className="modal-button">
-                <button>新規登録</button>
-                <button>ログイン</button>
+                <a className="create">新規登録</a>
+                <a className="login">ログイン</a>
             </div>
           </div>
         </div>
       );}
-
-    //let message;
-    //if (this.state.isTestOpen) {
-      //message = (
-        //<p>機能しちょる</p>
-      //);
-    //}
 
       return (
         <div>
