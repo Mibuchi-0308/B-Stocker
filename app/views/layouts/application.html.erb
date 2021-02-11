@@ -17,10 +17,16 @@
         <ul>
           <li><%= link_to("使い方", "/howto") %></li>
           <li><%= react_component('Login', {name: 'ログイン'}) %></li>
+          <li><%= react_component('CreateUser', {name:'新規登録'}) %></li>
         </ul>
       </div>
     </div>
 
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
     <%= yield %>
   </body>

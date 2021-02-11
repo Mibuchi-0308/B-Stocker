@@ -1,6 +1,56 @@
 // Place all the styles related to the folders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "modal";
+
+.folder-menu {
+  display: flex;
+  &.title {
+    flex: auto;
+    width: 50%;
+  }
+  &.folder-subMenu {
+    flex: auto;
+    width: 50%;
+    text-align: center;
+    margin: 0;
+    p  {
+      margin: 0 0 0 0;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.createFolder-modal {
+  @include modal;
+}
+
+.createFolder-modal-inner {
+  @include modal-inner(450px);
+}
+
+.createFolder-modal-header {
+  @include modal-header(#56B55A);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 145px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.createFolder-modal-contents {
+  @include modal-contents;
+}
+
+.createFolder-modal-button {
+  @include modal-button;
+}
+
 .folder-table {
   height: 570px;
   margin-top: 10px;

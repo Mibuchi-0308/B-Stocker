@@ -1,0 +1,95 @@
+@mixin modal {
+  text-align: center;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+@mixin modal-inner($width) {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  left: 0;
+  width: $width;
+  padding-bottom: 1em;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+@mixin modal-header($bgcolor) {
+  background-color: $bgcolor;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  align-items: flex-start;
+  height: 70px;
+  cursor: default;
+  img {
+    margin-left: 225px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  p {
+    margin: 0;
+    padding-top: 7px;
+    padding-left: 29px;
+    font-size: 40px;
+  }
+}
+
+@mixin modal-contents {
+  flex-direction: column;
+  flex-wrap: wrap;
+  p {
+    margin: 20px 0 0 0;
+    color: #535353;
+    font-size: 30px;
+    cursor: default;
+    }
+  input {
+    height: 35px;
+    width: 370px;
+    font-size: 25px;
+  }
+}
+
+@mixin modal-button {
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: none;
+  button {
+    //inputデザイン初期化
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    //ここまで
+
+    text-align: center;
+    font-size: 20px;
+    padding: 0.5em 2em;
+    text-decoration: none;
+    color: white;
+    border-radius: 3px;
+    margin: 20px 1.3em 0 1.3em;
+    &.create {
+      background: #668ad8;
+      box-shadow: 0 4px #627295;
+    }
+
+    &.login{
+      background: #3CC33C;
+      box-shadow: 0 4px #5F9872;
+    }
+  }
+  button:active {
+    box-shadow: none;
+    position: relative;
+    top: 4px;
+  }
+}

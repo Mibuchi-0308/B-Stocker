@@ -1,4 +1,11 @@
-<h1>フォルダ一覧</h1>
+<div class="folder-menu">
+  <div class="title">
+    <h1>フォルダ一覧</h1>
+  </div>
+  <%= form_tag("/folders/create") do %>
+    <%= react_component("CreateFolder", {name: "フォルダ作成"})%>
+  <% end %>
+</div>
 <div class="folder-table">
   <table>
     <thead>
@@ -8,14 +15,11 @@
       </tr>
     </thead>
     <tbody>
-    <% folder = {name: "テスト名１", date: "2021-01-27"} %>
-    <% i = 0 %>
-    <% while i <= 30 do %>
+    <% @folders.each do |folder| %>
       <tr>
-        <td class="name-value"><%= folder[:name] %></td>
-        <td class="date-value"><%= folder[:date] %></td>
+        <td class="name-value"><%= folder.name %></td>
+        <td class="date-value"><%= folder.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>
       </tr>
-    <% i += 1 %>
     <% end %>
     </tbody>
   </table>

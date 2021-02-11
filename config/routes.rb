@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/" => "home#top"
   get "/howto" => "home#howto"
   get "/folders" => "folders#index"
+  post "/folders/create" =>"folders#create"
 end

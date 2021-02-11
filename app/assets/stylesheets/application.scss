@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+@import "modal";
+
+ //ヘッダーメニュー
 body {
   margin: 0 auto;
   width: 1000px;
@@ -74,88 +78,51 @@ ul {
   }
 }
 
+//notice
+.flash {
+  padding: 5px 0;
+  color: white;
+  background: rgb(251, 170, 88);
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+
+
+//モーダル
 .login-modal {
-  margin: 0 auto;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  @include modal;
 }
 
-.modal-inner {
-  position: absolute;
-  top: 8%;
-  right: 0;
-  left: 0;
-  width: 450px;
-  padding-bottom: 1em;
-  margin: auto;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
+.login-modal-inner {
+  @include modal-inner(450px);
 }
 
-.modal-header {
-  background-color: #56B55A;
-  border-radius: 20px 20px 0 0;
-  display: flex;
-  align-items: flex-start;
-  height: 70px;
-  cursor: default;
-  img {
-    margin-left: 225px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  p {
-    margin: 0;
-    padding-top: 7px;
-    padding-left: 29px;
-    font-size: 40px;
-  }
+.login-modal-header {
+  @include modal-header(#56B55A);
 }
 
-.modal-contents {
-  flex-direction: column;
-  flex-wrap: wrap;
-  p {
-    margin: 20px 0 0 0;
-    color: #535353;
-    font-size: 30px;
-    cursor: default;
-    }
-  input {
-    height: 35px;
-    width: 370px;
-    font-size: 25px;
-  }
+.login-modal-contents {
+  @include modal-contents;
 }
+
+.createUser-modal {
+  @include modal;
+}
+
+.createUser-modal-inner {
+  @include modal-inner(450px);
+}
+
+.createUser-modal-header {
+  @include modal-header(#5B90D8);
+}
+
+.createUser-modal-contents {
+  @include modal-contents;
+}
+
 
 .modal-button {
-  flex-direction: column;
-  flex-wrap: wrap;
-  a {
-    font-size: 20px;
-    display: inline-block;
-    padding: 0.5em 2em;
-    text-decoration: none;
-    color: white;
-    border-radius: 3px;
-    margin: 20px 1.3em 0 1.3em;
-    &.create {
-      background: #668ad8;
-      box-shadow: 0 4px #627295;
-    }
-
-    &.login{
-      background: #3CC33C;
-      box-shadow: 0 4px #5F9872;
-    }
-  }
-  a:active {
-    box-shadow: none;
-    position: relative;
-    top: 4px;
-  }
+  @include modal-button;
 }

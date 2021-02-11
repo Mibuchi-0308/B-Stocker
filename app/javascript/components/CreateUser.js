@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-
-class Login extends React.Component {
+class CreateUser extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
@@ -17,24 +16,21 @@ class Login extends React.Component {
     this.setState({isModalOpen: false});
   }
 
-  handleClickCreateUser() {
-    this.setState({isModalOpen: false});
-  }
-
   render() {
-    let login_modal;
+
+    let createUser_modal;
     if (this.state.isModalOpen) {
-      login_modal = (
-        <div className="login-modal">
-          <div className="login-modal-inner">
-            <div className="login-modal-header">
-              <p>ログイン</p>
+      createUser_modal = (
+        <div className="createUser-modal">
+          <div className="createUser-modal-inner">
+            <div className="createUser-modal-header">
+              <p>新規登録</p>
               <img src="assets/modal/close.png"
                    className="close-btn"
                    onClick={() => {this.handleClickClose()}}
               />
             </div>
-            <div className="login-modal-contents">
+            <div className="createUser-modal-contents">
               <form>
               <p>メールアドレス</p>
               <input type="email" />
@@ -43,17 +39,8 @@ class Login extends React.Component {
               </form>
             </div>
             <div className="modal-button">
-                <button
-                  className="create"
-                  onClick={() => {this.handleClickCreateUser()}}
-                >
-                新規登録
-                </button>
-                <button
-                  className="login"
-                >
-                ログイン
-                </button>
+                <button className="login">ログイン</button>
+                <button className="create">新規登録</button>
             </div>
           </div>
         </div>
@@ -63,13 +50,14 @@ class Login extends React.Component {
         <div>
           <div
             className="hs-element"
-            onClick={() => {this.handleClickOpen()}}>
+            onClick={() => {this.handleClickOpen()}}
+          >
             <p>{this.props.name}</p>
             </div>
-            {login_modal}
+            {createUser_modal}
         </div>
       );
   }
 }
 
-export default Login
+export default CreateUser
