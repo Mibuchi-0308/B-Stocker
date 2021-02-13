@@ -1,9 +1,9 @@
 <div class="folder-menu">
   <div class="title">
-    <h1>フォルダ一覧</h1>
+    <h1><%= @folder.name %></h1>
   </div>
-  <%= form_tag("/folders/create") do %>
-    <%= react_component("CreateFolder", {name: "フォルダ作成"})%>
+  <%= form_tag("/folders/createBook") do %>
+    <%= react_component("CreateBook", {name: "本を追加する", folder_name: @folder.name})%>
   <% end %>
 </div>
 <div class="folder-table">
@@ -15,12 +15,12 @@
       </tr>
     </thead>
     <tbody>
-    <% @folders.each do |folder| %>
+    <% @books.each do |book| %>
       <tr>
       　<td class="name-value">
-          <%= link_to(folder.name, "/folders/#{folder.id}") %>
+          <%= link_to(book.name, "/folders/#{@folder.id}") %>
         </td>
-        <td class="date-value"><%= folder.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>
+        <td class="date-value"><%= book.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>
       </tr>
     <% end %>
     </tbody>

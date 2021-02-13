@@ -1,2 +1,9 @@
 <h1>Customers#new</h1>
-<p>Find me in app/views/customers/new.html.erb</p>
+<div class="customer-info">
+  <p>名前</p>
+  <textarea name="customer_name"></textarea>
+  <p>TEL</p>
+  <textarea name="customer_tel"></textarea>
+</div>
+
+<%= react_component('CustomersOrder', {books: @hashed_books}) %>

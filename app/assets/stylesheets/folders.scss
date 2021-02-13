@@ -51,6 +51,36 @@
   @include modal-button;
 }
 
+
+.createBook-modal {
+  @include modal;
+}
+
+.createBook-modal-inner {
+  @include modal-inner(450px);
+}
+
+.createBook-modal-header {
+  @include modal-header(#56B55A);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 145px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.createBook-modal-contents {
+  @include modal-contents;
+}
+
+.createBook-modal-button {
+  @include modal-button;
+}
+
+
 .folder-table {
   height: 570px;
   margin-top: 10px;

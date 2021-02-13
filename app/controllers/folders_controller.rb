@@ -13,4 +13,12 @@ class FoldersController < ApplicationController
       redirect_to("/folders")
     end
   end
+
+  def books
+    @folder = Folder.find_by(id: params[:folder_id])
+    @books = Book.where(folder_id: @folder.id)
+  end
+
+  def createBook
+  end
 end
