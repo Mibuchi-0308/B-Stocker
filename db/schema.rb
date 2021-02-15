@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_130839) do
+ActiveRecord::Schema.define(version: 2021_02_15_100137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "books", force: :cascade do |t|
     t.string "name"
-    t.string "c_day"
-    t.string "i_day"
     t.integer "user_id"
     t.integer "folder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "amount"
+    t.date "c_day"
+    t.date "i_day"
   end
 
   create_table "customers", force: :cascade do |t|

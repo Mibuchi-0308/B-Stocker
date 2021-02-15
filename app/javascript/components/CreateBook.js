@@ -34,23 +34,21 @@ class CreateBook extends React.Component {
               />
             </div>
             <div className="createBook-modal-contents">
-              <form>
-                <p>フォルダ名</p>
-                <input type="text" defaultValue={this.props.folder_name} readOnly/>
-                <p>書籍名</p>
-                <input type="text" />
-                <p>出来日</p>
-                <input type="date" />
-                <p>入荷日</p>
-                <input type="date" />
-                <p>入荷予定数</p>
-                <input type="number" />
-              </form>
+              <p>フォルダ名</p>
+              <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
+              <p>書籍名</p>
+              <input name="book_name" type="text" />
+              <p>出来日</p>
+              <input name="c_day" type="date" />
+              <p>入荷日</p>
+              <input name="i_day" type="date" />
+              <p>入荷予定数</p>
+              <input name="amount"type="number" />
             </div>
             <div className="createBook-modal-button">
                 <button
+                  type="submit"
                   className="create"
-                  onClick={() => {this.handleClickCreateUser()}}
                 >
                 新規作成
                 </button>

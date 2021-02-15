@@ -20,5 +20,19 @@ class FoldersController < ApplicationController
   end
 
   def createBook
+    @folder = Folder.find_by(name: params[:folder_name])
+    @book = Book.new(name: params[:book_name],
+                    c_day: params[:c_day],
+                    i_day: params[:i_day],
+                    amount: params[:amount],
+                    user_id: 1,
+                    folder_id: @folder.id
+                    )
+    if @book.save
+      flash[:notice] = "書籍が#{@folder.name}に登録されました。"
+    else
+      flash[:notice] = "書籍が登録されませんでした。内容を確認してください。"
+    end
+    redirect_to("/folders/#{@folder.id}")
   end
 end
