@@ -22,7 +22,7 @@
   }
 }
 
-
+//crateFolder
 .createFolder-modal {
   @include modal;
 }
@@ -51,7 +51,7 @@
   @include modal-button;
 }
 
-
+//createBook
 .createBook-modal {
   @include modal;
 }
@@ -66,7 +66,7 @@
     color: white;
   }
   img {
-    margin-left: 145px;
+    margin-left: 220px;
     margin-top: 10px;
     cursor: pointer;
   }
@@ -80,7 +80,66 @@
   @include modal-button;
 }
 
+//BookInfo
+.book-modal {
+  @include modal;
+}
 
+.book-modal-inner {
+  @include modal-inner(450px);
+}
+
+.book-modal-header {
+  @include modal-header(#56B55A);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 220px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.book-modal-contents {
+  @include modal-contents;
+}
+
+.book-modal-button {
+  @include modal-button;
+}
+
+//EditBook
+.editBook-modal {
+  @include modal;
+}
+
+.editBook-inner {
+  @include modal-inner(500px);
+}
+
+.editBook-header {
+  @include modal-header(#56B55A);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 270px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.editBook-contents {
+  @include modal-contents;
+}
+
+.editBook-button {
+  @include modal-button;
+}
+
+
+//table
 .folder-table {
   height: 570px;
   margin-top: 10px;
@@ -117,6 +176,10 @@ th {
   }
 }
 
+tr {
+
+}
+
 td {
   background-color: white;
   &.name-value {
@@ -126,4 +189,10 @@ td {
     width: 250px;
     text-align: center;
   }
+}
+
+
+//books
+.books-table {
+
 }

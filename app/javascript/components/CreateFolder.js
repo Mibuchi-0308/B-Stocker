@@ -25,7 +25,7 @@ class CreateFolder extends React.Component {
           <div className="createFolder-modal-inner">
             <div className="createFolder-modal-header">
               <p>フォルダ作成</p>
-              <img src="assets/modal/close.png"
+              <img src="/assets/modal/close.png"
                    className="close-btn"
                    onClick={() => {this.handleClickClose()}}
               />

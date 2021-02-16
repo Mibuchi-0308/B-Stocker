@@ -17,10 +17,6 @@ class Login extends React.Component {
     this.setState({isModalOpen: false});
   }
 
-  handleClickCreateUser() {
-    this.setState({isModalOpen: false});
-  }
-
   render() {
     let login_modal;
     if (this.state.isModalOpen) {
@@ -29,7 +25,7 @@ class Login extends React.Component {
           <div className="login-modal-inner">
             <div className="login-modal-header">
               <p>ログイン</p>
-              <img src="assets/modal/close.png"
+              <img src="/assets/modal/close.png"
                    className="close-btn"
                    onClick={() => {this.handleClickClose()}}
               />
@@ -43,10 +39,7 @@ class Login extends React.Component {
               </form>
             </div>
             <div className="modal-button">
-                <button
-                  className="create"
-                  onClick={() => {this.handleClickCreateUser()}}
-                >
+                <button className="create">
                 新規登録
                 </button>
                 <button

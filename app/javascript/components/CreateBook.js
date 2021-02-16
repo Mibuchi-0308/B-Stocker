@@ -16,10 +16,6 @@ class CreateBook extends React.Component {
     this.setState({isModalOpen: false});
   }
 
-  handleClickCreateUser() {
-    this.setState({isModalOpen: false});
-  }
-
   render() {
     let createBook_modal;
     if (this.state.isModalOpen) {
@@ -28,7 +24,7 @@ class CreateBook extends React.Component {
           <div className="createBook-modal-inner">
             <div className="createBook-modal-header">
               <p>書籍登録</p>
-              <img src="assets/modal/close.png"
+              <img src="/assets/modal/close.png"
                    className="close-btn"
                    onClick={() => {this.handleClickClose()}}
               />

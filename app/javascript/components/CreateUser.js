@@ -25,7 +25,7 @@ class CreateUser extends React.Component {
           <div className="createUser-modal-inner">
             <div className="createUser-modal-header">
               <p>新規登録</p>
-              <img src="assets/modal/close.png"
+              <img src="/assets/modal/close.png"
                    className="close-btn"
                    onClick={() => {this.handleClickClose()}}
               />
