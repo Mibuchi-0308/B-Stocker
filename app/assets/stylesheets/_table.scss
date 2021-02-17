@@ -1,0 +1,44 @@
+table {
+  height: 570px;
+  font-size: 20px;
+  border-color: #707070;
+}
+
+thead, tbody {
+  display: block;
+}
+
+thead {
+  background-color: #707070;
+}
+
+tbody {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 500px;
+}
+
+th {
+  color: white;
+  &.name {
+    width: 722px;
+  }
+  &.date {
+    width: 243px;
+  }
+}
+
+tr {
+
+}
+
+td {
+  background-color: white;
+  &.name-value {
+    width:750px
+  }
+  &.date-value {
+    width: 250px;
+    text-align: center;
+  }
+}
