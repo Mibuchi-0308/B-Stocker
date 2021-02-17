@@ -7,7 +7,7 @@ class BookInfo extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    modal: "close",
+    modal: "open",
   };
   }
 
@@ -38,10 +38,10 @@ class BookInfo extends React.Component {
                 />
               </div>
               <div className="book-modal-contents">
-                <p>フォルダ名</p>
-                <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
                 <p>書籍名</p>
                 <input name="book_name" type="text"  defaultValue={this.props.book_name} readOnly/>
+                <p>所属フォルダ</p>
+                <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
                 <p>出来日</p>
                 <input name="c_day" type="date" defaultValue={this.props.i_day} readOnly/>
                 <p>入荷日</p>
@@ -50,12 +50,12 @@ class BookInfo extends React.Component {
                 <input name="amount"type="number" defaultValue={this.props.amount} readOnly/>
               </div>
               <div className="book-modal-button">
-                  <button
-                    onClick={() => this.handleClickClose()}
-                    className="OK"
-                  >
+                <button　onClick={() => this.handleClickEdit()}　className="edit">
+                  編集
+                </button>
+                <button　onClick={() => this.handleClickClose()}　className="OK">
                   OK
-                  </button>
+                </button>
               </div>
             </div>
           </div>
@@ -65,18 +65,22 @@ class BookInfo extends React.Component {
         bookInfo_modal = "";
       break;
       case "edit":
-        handleClickClose();
+        bookInfo_modal = (<EditBook
+            book_name={this.props.book_name}
+            folder_id={this.props.folder_name}
+            c_day={this.props.c_day}
+            i_day={this.props.i_day}
+            amount={this.props.amount}
+          />);
       break;
     }
 
       return (
         <div>
-          <div
-            className="hs-element"
-            onClick={() => {this.handleClickOpen()}}>
-            <p>{this.props.book_name}</p>
-            </div>
-            {bookInfo_modal}
+          <div onClick={() => {this.handleClickOpen()}}>
+            {this.props.book_name}
+          </div>
+          {bookInfo_modal}
         </div>
       );
   }

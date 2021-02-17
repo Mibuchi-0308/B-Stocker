@@ -6,7 +6,7 @@
     <%= react_component("CreateBook", {name: "本を追加する", folder_name: @folder.name})%>
   <% end %>
 </div>
-<div class="folder-table">
+<div class="books-table">
   <table>
     <thead>
       <tr>
@@ -15,14 +15,13 @@
         <th class="i_day">入荷日</th>
         <th class="amount">入荷数</th>
         <th class="orders">予約数</th>
-        <th class="date">最終更新日</th>
       </tr>
     </thead>
     <tbody>
     <% @books.each do |book| %>
       <tr>
       　<td class="name-value">
-          <%= react_component("BookInfo", {
+          <%= react_component("BookManager", {
             folder_name: @folder.name,
             book_name: book.name,
             c_day: book.c_day,
@@ -30,12 +29,18 @@
             amount: book.amount
           })%>
         </td>
-        <td>
-          <%= book.c_day %>
+        <td class="c_day-value">
+          <%= book.c_day.strftime("%m/%d") %>
         </td>
-        <td></td>
-        <td></td>
-        <td class="date-value"><%= book.created_at.strftime("%m/%d %H:%M") %></td>
+        <td class="i_day-value">
+          <%= book.i_day.strftime("%m/%d") %>
+        </td>
+        <td class="amount-value">
+          <%= book.amount %>
+        </td>
+        <td class="orders-value">
+          <%= Order.where(book_id: book.id).count %>
+        </td>
       </tr>
     <% end %>
     </tbody>

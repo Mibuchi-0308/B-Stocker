@@ -7,7 +7,7 @@ class EditBook extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    modal: "close",
+    modal: "open",
   };
   }
 
@@ -29,15 +29,15 @@ class EditBook extends React.Component {
       case "open":
         editBook_modal = (
           <div className="editBook-modal">
-            <div className="editBook-modal-inner">
-              <div className="editBook-modal-header">
+            <div className="editBook-inner">
+              <div className="editBook-header">
                 <p>書籍編集</p>
                 <img src="/assets/modal/close.png"
                      className="close-btn"
                      onClick={() => {this.handleClickClose()}}
                 />
               </div>
-              <div className="editBook-modal-contents">
+              <div className="editBook-contents">
                 <p>フォルダ名</p>
                 <input name="folder_name" type="text" defaultValue={this.props.folder_name} />
                 <p>書籍名</p>
@@ -49,19 +49,16 @@ class EditBook extends React.Component {
                 <p>入荷予定数</p>
                 <input name="amount"type="number" defaultValue={this.props.amount} />
               </div>
-              <div className="editBook-modal-button">
-                  <button
-                    onClick={() => this.handleClickInfo()}
-                    className="delete"
-                  >
+              <div className="editBook-button">
+                <button onClick={() => this.handleClickInfo()} className="back">
                   戻る
-                  </button>
-                  <button
-                    onClick={() => this.handleClickClose()}
-                    className="OK"
-                  >
+                </button>
+                <button className="delete">
+                  削除
+                </button>
+                <button onClick={() => this.handleClickClose()} className="OK">
                   OK
-                  </button>
+                </button>
               </div>
             </div>
           </div>
@@ -71,13 +68,12 @@ class EditBook extends React.Component {
         editBook_modal = "";
       break;
       case "info":
-        this.handleClickClose();
+        editBook_modal = "";
       break;
     }
 
       return (
         <div>
-          <p onClick={() => {this.handleClickOpen()}}>編集</p>
           {editBook_modal}
         </div>
       );

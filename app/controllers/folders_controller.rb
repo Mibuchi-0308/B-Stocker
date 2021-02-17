@@ -35,4 +35,11 @@ class FoldersController < ApplicationController
     end
     redirect_to("/folders/#{@folder.id}")
   end
+
+  def dereteBook
+    @book = Book.find_by(id: params[:book_id])
+    flash[:notice] = "書籍が削除されました"
+    @book.destroy
+    redirect_to("/folders/#{@book.folder_id}")
+  end
 end

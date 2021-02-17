@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get "folders/index" => "folders#index"
   post "folders/create" =>"folders#create"
   post "folders/createBook" => "folders#createBook"
+  post "folders/deleteBook" => "folders#deleteBook"
 end
