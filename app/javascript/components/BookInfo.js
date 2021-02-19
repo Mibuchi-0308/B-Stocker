@@ -77,9 +77,6 @@ class BookInfo extends React.Component {
 
       return (
         <div>
-          <div onClick={() => {this.handleClickOpen()}}>
-            {this.props.book_name}
-          </div>
           {bookInfo_modal}
         </div>
       );

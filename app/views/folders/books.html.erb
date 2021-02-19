@@ -2,8 +2,15 @@
   <div class="title">
     <h1><%= @folder.name %></h1>
   </div>
-  <%= form_tag("/folders/createBook") do %>
+  <%= form_tag() do %>
     <%= react_component("CreateBook", {name: "本を追加する", folder_name: @folder.name})%>
+    <%= react_component(
+      "FolderManager",
+      {name: @folder.name,
+      created_at: @folder.created_at.strftime("%m月%d日 %H時%M分"),
+      folderId: @folder.id,
+      value: "Folder"}
+    )%>
   <% end %>
 </div>
 <div class="books-table">
@@ -21,13 +28,17 @@
     <% @books.each do |book| %>
       <tr>
       　<td class="name-value">
-          <%= react_component("BookManager", {
-            folder_name: @folder.name,
-            book_name: book.name,
-            c_day: book.c_day,
-            i_day: book.i_day,
-            amount: book.amount
-          })%>
+          <%= form_tag() do %>
+            <%= react_component("BookManager", {
+              folder_name: @folder.name,
+              name: book.name,
+              c_day: book.c_day,
+              i_day: book.i_day,
+              amount: book.amount,
+              bookId: book.id,
+              value: "Book"
+            })%>
+          <% end %>
         </td>
         <td class="c_day-value">
           <%= book.c_day.strftime("%m/%d") %>
@@ -36,7 +47,11 @@
           <%= book.i_day.strftime("%m/%d") %>
         </td>
         <td class="amount-value">
-          <%= book.amount %>
+          <% if book.amount %>
+            <%= book.amount %>
+          <% else %>
+            未定
+          <% end %>
         </td>
         <td class="orders-value">
           <%= Order.where(book_id: book.id).count %>

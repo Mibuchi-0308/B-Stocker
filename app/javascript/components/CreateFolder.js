@@ -17,7 +17,6 @@ class CreateFolder extends React.Component {
   }
 
   render() {
-
     let createFolder_modal;
     if (this.state.isModalOpen) {
       createFolder_modal = (
@@ -31,8 +30,8 @@ class CreateFolder extends React.Component {
               />
             </div>
             <div className="createFolder-modal-contents">
-              <p>名前</p>
-              <textarea name="folderName"/>
+              <p>フォルダ名</p>
+              <input type="text" name="folderName" />
             </div>
             <div className="createFolder-modal-button">
               <button className="create" type="submit">

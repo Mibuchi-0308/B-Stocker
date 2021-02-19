@@ -39,12 +39,13 @@ class CreateBook extends React.Component {
               <p>入荷日</p>
               <input name="i_day" type="date" />
               <p>入荷予定数</p>
-              <input name="amount"type="number" />
+              <input name="amount" type="number" />
             </div>
             <div className="createBook-modal-button">
                 <button
                   type="submit"
                   className="create"
+                  formAction={"/folders/createBook"}
                 >
                 新規作成
                 </button>

@@ -123,7 +123,30 @@ ul {
   @include modal-contents;
 }
 
-
 .modal-button {
+  @include modal-button;
+}
+
+//confirModal
+.confirModal {
+  @include modal;
+}
+
+.confirModal-inner {
+  @include modal-inner(450px);
+}
+
+.confirModal-header {
+  @include modal-header(#F56340);
+  img {
+    margin-left: 305px;
+  }
+}
+
+.confirModal-contents {
+  @include modal-contents;
+}
+
+.confirModal-button {
   @include modal-button;
 }

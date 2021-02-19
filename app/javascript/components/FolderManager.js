@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import ConfirModal from "./ConfirModal"
 
-class BookManager extends React.Component {
+class FolderManager extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
@@ -35,8 +35,8 @@ class BookManager extends React.Component {
 
     switch (this.state.modal) {
       case "info":
-        modalName = "bookInfo";
-        modalTitle = "書籍詳細";
+        modalName = "folderInfo";
+        modalTitle = "フォルダ詳細";
         modalButton = (
           <div>
             <button onClick={() => this.handleClickEdit()}　className="edit" type="button">
@@ -59,16 +59,10 @@ class BookManager extends React.Component {
                   />
                 </div>
                 <div className={modalName + "-modal-contents"}>
-                <p>書籍名</p>
-                <input name="book_name" type="text"  defaultValue={this.props.name} readOnly/>
-                <p>所属フォルダ</p>
-                <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
-                <p>出来日</p>
-                <input name="c_day" type="date" defaultValue={this.props.c_day} readOnly/>
-                <p>入荷日</p>
-                <input name="i_day" type="date" defaultValue={this.props.i_day} readOnly/>
-                <p>入荷予定数</p>
-                <input name="amount"type="number" defaultValue={this.props.amount} readOnly/>
+                  <p>フォルダ名</p>
+                  <input name="folder_name" type="text"  defaultValue={this.props.name} readOnly />
+                  <p>作成日</p>
+                  <input name="folder_created_at" type="text" defaultValue={this.props.created_at} readOnly />
                 </div>
                 <div className={modalName + "-modal-button"}>
                   {modalButton}
@@ -79,7 +73,7 @@ class BookManager extends React.Component {
         );
       break;
       case "edit":
-        modalName = "editBook";
+        modalName = "editFolder";
         modalTitle = "編集";
         modalButton = (
           <div>
@@ -89,7 +83,7 @@ class BookManager extends React.Component {
             <button　 onClick={() => this.handleClickDelete()} className="delete" type="button">
               削除
             </button>
-            <button className="OK" id={this.props.bookId + this.props.value}type="submit" formAction={"/folders/" + this.props.bookId + "/updateBook"}>
+            <button className="OK" id={this.props.folderId + this.props.value} type="submit" formAction={"/folders/" + this.props.folderId + "/update"}>
               OK
             </button>
           </div>
@@ -106,16 +100,10 @@ class BookManager extends React.Component {
                   />
                 </div>
                 <div className={modalName + "-modal-contents"}>
-                  <p>書籍名</p>
-                  <input name="book_name" type="text"  defaultValue={this.props.name} />
-                  <p>所属フォルダ</p>
-                  <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
-                  <p>出来日</p>
-                  <input name="c_day" type="date" defaultValue={this.props.c_day} />
-                  <p>入荷日</p>
-                  <input name="i_day" type="date" defaultValue={this.props.i_day} />
-                  <p>入荷予定数<span>未定にする場合は空にして送信してください。</span></p>
-                  <input name="amount"type="number" defaultValue={this.props.amount} />
+                  <p>フォルダ名</p>
+                  <input name="folder_name" type="text"  defaultValue={this.props.name} />
+                  <p>作成日</p>
+                  <input name="folder_created_at" type="text" defaultValue={this.props.created_at} readOnly />
                 </div>
                 <div className={modalName + "-modal-button"}>
                   {modalButton}
@@ -128,9 +116,9 @@ class BookManager extends React.Component {
       case "delete":
         modal = <ConfirModal
         name="削除"
-        className="bookDelete"
+        className="folderDelete"
         text={this.props.name + "を削除しますか？"}
-        Id={this.props.bookId}
+        Id={this.props.folderId}
         value={this.props.value}
         />
       break;
@@ -140,9 +128,9 @@ class BookManager extends React.Component {
     }
 
     return (
-      <div className="bookValue">
-        <div className="touch" onClick={()=>{this.handleClickInfo()}}>
-          {this.props.name}
+      <div>
+        <div onClick={()=>{this.handleClickInfo()}}>
+          フォルダ詳細
         </div>
         {modal}
       </div>
@@ -150,4 +138,4 @@ class BookManager extends React.Component {
   }
 }
 
-export default BookManager
+export default FolderManager

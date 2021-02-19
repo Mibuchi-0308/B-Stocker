@@ -52,6 +52,70 @@
   @include modal-button;
 }
 
+//folderInfo
+.folderInfo-modal {
+  @include modal;
+}
+
+.folderInfo-modal-inner {
+  @include modal-inner(450px);
+}
+
+.folderInfo-modal-header {
+  @include modal-header(#56B55A);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 220px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.folderInfo-modal-contents {
+  @include modal-contents;
+}
+
+.folderInfo-modal-button {
+  @include modal-button;
+}
+
+
+//EditFolder
+.editFolder-modal {
+  @include modal;
+}
+
+.editFolder-modal-inner {
+  @include modal-inner(500px);
+}
+
+.editFolder-modal-header {
+  @include modal-header(#FEA754);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 350px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.editFolder-modal-contents {
+  @include modal-contents;
+  input {
+    color: #7E7E7E;
+  }
+}
+
+.editFolder-modal-button {
+  @include modal-button;
+}
+
+
+
 //createBook
 .createBook-modal {
   @include modal;
@@ -81,16 +145,17 @@
   @include modal-button;
 }
 
+
 //BookInfo
-.book-modal {
+.bookInfo-modal {
   @include modal;
 }
 
-.book-modal-inner {
+.bookInfo-modal-inner {
   @include modal-inner(450px);
 }
 
-.book-modal-header {
+.bookInfo-modal-header {
   @include modal-header(#56B55A);
   p {
     color: white;
@@ -102,57 +167,82 @@
   }
 }
 
-.book-modal-contents {
+.bookInfo-modal-contents {
   @include modal-contents;
 }
 
-.book-modal-button {
+.bookInfo-modal-button {
   @include modal-button;
 }
+
 
 //EditBook
 .editBook-modal {
   @include modal;
 }
 
-.editBook-inner {
+.editBook-modal-inner {
   @include modal-inner(500px);
 }
 
-.editBook-header {
-  @include modal-header(#56B55A);
+.editBook-modal-header {
+  @include modal-header(#FEA754);
   p {
     color: white;
   }
   img {
-    margin-left: 270px;
+    margin-left: 350px;
     margin-top: 10px;
     cursor: pointer;
   }
 }
 
-.editBook-contents {
+.editBook-modal-contents {
   @include modal-contents;
+  input {
+    color: #7E7E7E;
+  }
 }
 
-.editBook-button {
+.editBook-modal-button {
   @include modal-button;
 }
 
 
-//table
+//folderのtable
 .folder-table {
   height: 570px;
   margin-top: 10px;
   background-color: #F0F0F0;
   @include valueWidth(70%, 30%, 0%, 0%, 0%, 0%);
+  a {
+    text-align: left;
+    margin-left: 10px;
+  }
 }
 
 
-//books
+//booksのtable
 .books-table {
   height: 570px;
   margin-top: 10px;
   background-color: #F0F0F0;
   @include valueWidth(40%, 0%, 10%, 10%, 10%, 10%);
+}
+
+
+
+.name-value {
+  cursor: pointer;
+  .bookValue {
+    float: left;
+    display: inline-block;
+  }
+  .delete-modal {
+    float: right;
+    display: inline-block;
+  }
+  .touch {
+    margin-left: 10px;
+  }
 }

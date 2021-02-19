@@ -63,6 +63,7 @@
   justify-content: center;
   border: none;
   button {
+
     //inputデザイン初期化
     background-color: transparent;
     border: none;
@@ -70,6 +71,7 @@
     outline: none;
     appearance: none;
     //ここまで
+
     flex-direction: row;
     flex-wrap: nowrap;
     text-align: center;
@@ -108,6 +110,11 @@
     &.OK {
       background: #56B55A;
       box-shadow: 0 4px #627295;
+    }
+
+    &.quit {
+      background: #3CC33C;
+      box-shadow: 0 4px #5F9872;
     }
   }
   button:active {
