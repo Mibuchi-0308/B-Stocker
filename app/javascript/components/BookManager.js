@@ -89,7 +89,7 @@ class BookManager extends React.Component {
             <button　 onClick={() => this.handleClickDelete()} className="delete" type="button">
               削除
             </button>
-            <button className="OK" id={this.props.bookId + this.props.value}type="submit" formAction={"/folders/" + this.props.bookId + "/updateBook"}>
+            <button className="OK" id={this.props.bookId + this.props.value} type="submit" formAction={"/folders/" + this.props.bookId + "/updateBook"}>
               OK
             </button>
           </div>
@@ -114,7 +114,7 @@ class BookManager extends React.Component {
                   <input name="c_day" type="date" defaultValue={this.props.c_day} />
                   <p>入荷日</p>
                   <input name="i_day" type="date" defaultValue={this.props.i_day} />
-                  <p>入荷予定数<span>未定にする場合は空にして送信してください。</span></p>
+                  <p>入荷予定数</p>
                   <input name="amount"type="number" defaultValue={this.props.amount} />
                 </div>
                 <div className={modalName + "-modal-button"}>
