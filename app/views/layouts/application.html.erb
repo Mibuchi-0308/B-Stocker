@@ -14,11 +14,13 @@
     <div class="header-menu">
       <a href="/" class="B-Stocker">B-Stocker</a>
       <div class="header-submenu">
-        <ul>
-          <li><%= link_to("使い方", "/howto") %></li>
-          <li><%= react_component('Login', {name: 'ログイン'}) %></li>
-          <li><%= react_component('CreateUser', {name:'新規登録'}) %></li>
-        </ul>
+        <%= form_tag() do %>
+          <ul>
+            <li><%= link_to("使い方", "/howto") %></li>
+            <li><%= react_component('Login', {name: 'ログイン'}) %></li>
+            <li><%= react_component('CreateUser', {name:'新規登録'}) %></li>
+          </ul>
+        <% end %>
       </div>
     </div>
 
