@@ -42,31 +42,42 @@ ul {
 .header-menu {
   background-color: #009B48;
   height: 120px;
+  display: flex;
+  align-items: center;
 }
 
 .B-Stocker {
+  width: 40%;
   font-size: 55px;
-  color: white;
-  padding-left: 45px;
-  display: inline-block;
-  padding-top: 20px;
-}
-
-.header-submenu {
-  text-decoration: none;
-  font-size: 30px;
-  float: right;
-  color: white;
-  text-align: center;
-  padding-top: 10px;
   a {
     color: white;
-    display: inline-block;
+    margin-left: 45px;
   }
-  li {
-    float: left;
-    padding-right: 20px;
-    cursor: pointer;
+}
+
+.header-submenu-wrapper {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .header-submenu {
+    flex: auto;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      color: white;
+    }
+    li {
+      padding-right: 20px;
+      cursor: pointer;
+    }
   }
 }
 

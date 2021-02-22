@@ -36,7 +36,9 @@ class CreateUser extends React.Component {
               <p>メールアドレス</p>
               <input type="email" name="email"/>
               <p>パスワード</p>
-              <input type="password" name="password"/>
+              <input type="password" name="password_1"/>
+              <p>パスワード(確認)</p>
+              <input type="password" name="password_2"/>
             </div>
             <div className="modal-button">
               <button className="login" onClick={() => handleClickClose()}>ログイン</button>

@@ -31,22 +31,20 @@ class Login extends React.Component {
               />
             </div>
             <div className="login-modal-contents">
-              <form>
+              <p>ユーザー名</p>
+              <input name="user_name" />
               <p>メールアドレス</p>
-              <input type="email" />
+              <input type="email" name="email"/>
               <p>パスワード</p>
-              <input type="password" />
-              </form>
+              <input type="password" name="password"/>
             </div>
             <div className="modal-button">
-                <button className="create">
+              <button className="create">
                 新規登録
-                </button>
-                <button
-                  className="login"
-                >
+              </button>
+              <button className="login" type="submit" id="login" formAction="/login">
                 ログイン
-                </button>
+              </button>
             </div>
           </div>
         </div>
