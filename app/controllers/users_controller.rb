@@ -40,4 +40,17 @@ class UsersController < ApplicationController
     redirect_to("/")
   end
 
+  def update
+    @user = User.find_by(id: params[:user_id])
+    @user.name = params[:name]
+    @user.email = params[:email]
+    if @user.save
+      flash[:notice] = "ユーザー情報を編集しました"
+      redirect_to("/users/#{@user.id}")
+    else
+      flash[:notice] = "ユーザー情報の編集に失敗しました。内容を確認してください"
+      render("users/#{@user.id}")
+    end
+  end
+
 end
