@@ -1,8 +1,7 @@
 <h1><%= @current_user.name %>のページ</h1>
-<div class="userMenu">
-  <p>ユーザーネーム</p>
-  <p><%= @current_user.name %></p>
-  <p>登録メールアドレス</p>
-  <p><%= @current_user.email %></p>
-  <button name="saba">登録内容の編集</button>
-</div>
+<%= react_component("UserPage",
+                   {userName: @current_user.name,
+                    email: @current_user.email,
+                    password: @current_user.password,
+                    userId: @current_user.id,
+                    value: "User"}) %>
