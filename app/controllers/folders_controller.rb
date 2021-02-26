@@ -70,7 +70,7 @@ class FoldersController < ApplicationController
     @book.i_day = params[:i_day]
     @book.amount = params[:amount]
 
-    if !@book.amount || @book.amount >= 0
+    if @book.amount >= 0
       @book.save
       flash[:notice] = "書籍が編集されました"
     elsif @book.amount < 0
