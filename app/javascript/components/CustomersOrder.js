@@ -5,7 +5,7 @@ class CustomersOrder extends React.Component {
     super(props);
     this.state = {
       addList: Array(),
-      errorMessage: "",
+      message: "右の希望書籍をクリックしてください。",
     };
   }
 
@@ -20,8 +20,8 @@ class CustomersOrder extends React.Component {
       return (book.id === value );
     });
 
-    let switchErrorMessage = pureFind ? `『${clicked.name}』の冊数を追加しました。` : "";
-    this.setState({errorMessage: switchErrorMessage});
+    let switchMessage = pureFind ? `『${clicked.name}』の冊数を追加しました。` : `『${clicked.name}』を追加しました。`;
+    this.setState({message: switchMessage});
 
     //amountの処理
     if (pureFind) {
@@ -80,7 +80,7 @@ class CustomersOrder extends React.Component {
     let bookList;
     let addListObject;
     let addList = this.state.addList;
-    let errorMessage = this.state.errorMessage;
+    let message = this.state.message;
 
     bookList = this.props.books.map((book) => {
       thisValue = book.name;
@@ -113,13 +113,13 @@ class CustomersOrder extends React.Component {
       })
 
     return (
-      <div>
+      <div className="orderList">
+        <div className="addList">
+          <p>{message}</p>
+          {addListObject}
+        </div>
         <div className="bookList">
           {bookList}
-        </div>
-        <div className="orderList">
-          <p>{errorMessage}</p>
-          {addListObject}
         </div>
       </div>
     );
