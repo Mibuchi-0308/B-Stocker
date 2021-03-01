@@ -56,7 +56,8 @@ class CustomersOrder extends React.Component {
     }
   }
 
-  handleClickRemove(value) {;
+  handleClickRemove(value) {
+    let switchMessage;
     let list = this.state.addList;
     let clicked = list.find((book) => {
       return (book.id === value)
@@ -66,9 +67,11 @@ class CustomersOrder extends React.Component {
       let unClicked = list.filter((book) => {
         return (book.id !== value)
       });
-      this.setState({addList: unClicked});
+      switchMessage = `『${clicked.name}』を客注リストから削除しました。`;
+      this.setState({addList: unClicked, message: switchMessage});
     } else {
       clicked.amount --;
+      switchMessage = `『${clicked.name}』の数量を客注リストから減らしました。`
       this.setState({addList: list});
     }
 
