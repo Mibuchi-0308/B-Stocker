@@ -1,9 +1,11 @@
-<h1>Customers#new</h1>
+<h1>顧客登録</h1>
 <div class="customer-info">
   <p>名前</p>
-  <textarea name="customer_name"></textarea>
+  <input name="customer_name"></input>
   <p>TEL</p>
-  <textarea name="customer_tel"></textarea>
+  <input name="customer_tel"></input>
 </div>
 
-<%= react_component('CustomersOrder', {books: @hashed_books}) %>
+<%= form_tag() do %>
+  <%= react_component('CustomersOrder', {books: @hashed_books}) %>
+<% end %>

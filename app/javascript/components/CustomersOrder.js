@@ -41,10 +41,9 @@ class CustomersOrder extends React.Component {
       })
       target.amount = clickedAmount;
       this.setState({addList: list});
-    }
-
-    if (!pureFind) {
+    } else {
       newValue.push(clicked);
+      //ID基準の並べ替え。任意番号だとか、発売日でソートしたほうがよさそう。
       newValue.sort((a,b) =>{
         if (a.id < b.id) {
           return -1;
@@ -71,8 +70,8 @@ class CustomersOrder extends React.Component {
       this.setState({addList: unClicked, message: switchMessage});
     } else {
       clicked.amount --;
-      switchMessage = `『${clicked.name}』の数量を客注リストから減らしました。`
-      this.setState({addList: list});
+      switchMessage = `『${clicked.name}』の数量を客注リストから削減しました。`
+      this.setState({addList: list, message: switchMessage});
     }
 
   }
@@ -88,12 +87,14 @@ class CustomersOrder extends React.Component {
     bookList = this.props.books.map((book) => {
       thisValue = book.name;
       return (
-        <textarea
-          key={book.id}
-          defaultValue={thisValue}
-          onClick={() => {this.handleClickAdd(book.id)}}
-          readOnly
-        />
+        <div className="bookListValue" key={book.id}>
+          <textarea
+            key={book.id}
+            defaultValue={thisValue}
+            onClick={() => {this.handleClickAdd(book.id)}}
+            readOnly
+          />
+        </div>
       );
     });
 
@@ -106,10 +107,15 @@ class CustomersOrder extends React.Component {
             defaultValue={thisValue}
             onClick={() => {this.handleClickRemove(book.id)}}
             readOnly
+            name="orderBook[]"
+            id={book.name + "-id:z" + book.id}
             />
           <textarea
+          className="orderBookAmount"
             defaultValue={book.amount}
             readOnly
+            name="orderAmount[]"
+            id={book.name + "-amount"}
           />
         </div>
       );

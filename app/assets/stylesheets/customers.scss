@@ -3,20 +3,40 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .customer-info {
   border-bottom: dashed 4px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  p {
+    margin-bottom: 0.5em;
+    font-size: 18px;
+  }
+  input {
+    font-size: 22px;
+    width: 400px;
+    height: 40px;
+  }
 }
 
 .orderList {
   display: flex;
   text-align: center;
+  p {
+    margin: 0;
+  }
 }
 
 .bookList {
+  justify-content: center;
   width: 50%;
   textarea {
-    display: block;
+    text-align: center;
   }
 }
 
 .addList {
+  justify-content: center;
   width: 50%;
+  textarea {
+    text-align: center;
+  }
 }
