@@ -6,6 +6,8 @@ class CustomersOrder extends React.Component {
     this.state = {
       addList: Array(),
       message: "右の希望書籍をクリックしてください。",
+      selectedFolder: "フォルダを選択してください",
+      searchedBooks: ""
     };
   }
 
@@ -76,13 +78,25 @@ class CustomersOrder extends React.Component {
 
   }
 
+  handleClickSelectFolder(clicked) {
+    let searched;
+    let allBooks = this.props.books;
+    let targetFolder = this.props.folders;
+    searched = allBooks.find((book) => {
+      return (book.folder_id === targetFolder.id)
+    });
+    this.setState({selectedFolder: clicked, searchedBooks: searched});
+  }
+
 
   render () {
     let thisValue;
     let bookList;
+    let folderList;
     let addListObject;
     let addList = this.state.addList;
     let message = this.state.message;
+    let folderName = <p>{this.state.selectedFolder}</p>;
 
     bookList = this.props.books.map((book) => {
       thisValue = book.name;
@@ -128,7 +142,9 @@ class CustomersOrder extends React.Component {
           {addListObject}
         </div>
         <div className="bookList">
+          {folderName}
           {bookList}
+          {folderList}
         </div>
       </div>
     );

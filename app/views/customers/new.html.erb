@@ -7,5 +7,5 @@
 </div>
 
 <%= form_tag() do %>
-  <%= react_component('CustomersOrder', {books: @hashed_books}) %>
+  <%= react_component('CustomersOrder', {books: @hashed_books, folders: @folders}) %>
 <% end %>
