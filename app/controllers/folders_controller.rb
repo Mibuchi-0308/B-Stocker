@@ -1,16 +1,16 @@
 class FoldersController < ApplicationController
   def index
-    @folders = Folder.where(user_id: 1)
+    @folders = Folder.where(user_id: @currentUser.id)
   end
 
   def create
-    @folder = Folder.new(name: params[:folderName], user_id: 1)
+    @folder = Folder.new(name: params[:folderName], user_id: @currentUser.id)
     if @folder.save
       flash[:notice] = "フォルダを作成しました"
-      redirect_to("/folders")
+      redirect_to("/folders/#{@currentUser.id}/index")
     else
-      flash[:notice] = "名前の入力をしてください"
-      redirect_to("/folders")
+      flash[:notice] = "フォルダの保存に失敗しました。内容を確認してください"
+      redirect_to("/folders/#{@currentUser.id}/index")
     end
   end
 
@@ -22,7 +22,7 @@ class FoldersController < ApplicationController
     else
       flash[:notice] = "フォルダの編集に失敗しました。内容を確認してください"
     end
-    redirect_to("/folders/#{@folder.id}")
+    redirect_to("/folders/#{@folder.id}/books")
   end
 
   def deleteFolder
@@ -30,10 +30,10 @@ class FoldersController < ApplicationController
     @book = Book.find_by(folder_id: @folder.id)
     if !@book && @folder.destroy
       flash[:notice] = "フォルダが削除されました"
-      redirect_to("/folders")
+      redirect_to("/folders/#{@currentUser.id}/index")
     else
       flash[:notice] = "書籍の削除に失敗しました"
-      redirect_to("/folders/#{@folder.id}")
+      redirect_to("/folders/#{@folder.id}/books")
     end
 
   end
@@ -49,7 +49,7 @@ class FoldersController < ApplicationController
                     c_day: params[:c_day],
                     i_day: params[:i_day],
                     amount: params[:amount],
-                    user_id: 1,
+                    user_id: @currentUser.id,
                     folder_id: @folder.id
                     )
 
@@ -60,7 +60,7 @@ class FoldersController < ApplicationController
     else
       flash[:notice] = "書籍が登録されませんでした。内容を確認してください"
     end
-    redirect_to("/folders/#{@folder.id}")
+    redirect_to("/folders/#{@folder.id}/books")
   end
 
   def updateBook
@@ -78,7 +78,7 @@ class FoldersController < ApplicationController
     elsif !@book.save
       flash[:notice] = "書籍の編集に失敗しました。内容を確認してください"
     end
-    redirect_to("/folders/#{@book.folder_id}")
+    redirect_to("/folders/#{@book.folder_id}/books")
   end
 
   def deleteBook
@@ -88,7 +88,7 @@ class FoldersController < ApplicationController
     else
       flash[:notice] = "書籍の削除に失敗しました"
     end
-    redirect_to("/folders/#{@book.folder_id}")
+    redirect_to("/folders/#{@book.folder_id}/books")
   end
 
 end

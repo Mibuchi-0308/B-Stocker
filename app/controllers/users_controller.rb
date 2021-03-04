@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
     if @user && @user.save
         flash[:notice] = "アカウントを作成しました"
-        redirect_to("/")
+        redirect_to("/top")
     else
         flash[:notice] = "アカウントの作成に失敗しました。登録内容を確認してください"
         #できればトップに戻りつつ、ユーザー作成モーダルを開いてレンダーしたい。
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/")
+      redirect_to("/top")
     else
       flash[:notice] = "ログインに失敗しました。入力内容を確認してください"
       #できればトップに戻りつつ、ログインモーダルを開いてレンダーしたい。

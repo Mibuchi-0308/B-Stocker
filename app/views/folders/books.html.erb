@@ -1,6 +1,6 @@
 <div class="folder-menu">
   <div class="title">
-    <h1><%= @folder.name %></h1>
+    <h1><a href="/folders/<%= @currentUser.id %>/index"><%= @folder.name %></a></h1>
   </div>
   <%= form_tag("/folders/#{@folder.id}/createBook") do %>
     <%= react_component("CreateBook", {name: "本を追加する", folder: @folder})%>

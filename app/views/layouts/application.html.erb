@@ -18,19 +18,20 @@
         </div>
         <div class="header-submenu-wrapper">
           <div class="header-submenu">
-          <%= form_tag() do %>
+            <%= form_tag("/users/create", id: :createUser) do %>
+            <% end %>
+            <%= form_tag("/login", id: :login) do %>
+            <% end %>
             <ul>
-              <% if @current_user %>
-                <li><%= link_to(@current_user.name, "/users/#{@current_user.id}")%></li>
+              <% if @currentUser %>
+                <li><%= link_to(@currentUser.name, "/users/#{@currentUser.id}")%></li>
                 <li><%= link_to("ログアウト", "/logout", {method: :post}) %></li>
               <% else %>
+                <li><%= link_to("使い方", "/howto") %></li>
                 <li><%= react_component('Login', {name: 'ログイン'}) %></li>
               <% end %>
-
-              <li><%= link_to("使い方", "/howto") %></li>
               <li><%= react_component('CreateUser', {name:'新規登録'}) %></li>
             </ul>
-          <% end %>
           </div>
         </div>
       </div>

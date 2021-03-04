@@ -32,17 +32,17 @@ class CreateUser extends React.Component {
             </div>
             <div className="createUser-modal-contents">
               <p>ユーザーネーム</p>
-              <input type="text" name="user_name"/>
+              <input type="text" name="user_name"form="createUser" />
               <p>メールアドレス</p>
-              <input type="email" name="email"/>
+              <input type="email" name="email"form="createUser" />
               <p>パスワード</p>
-              <input type="password" name="password_1"/>
+              <input type="password" name="password_1"form="createUser" />
               <p>パスワード(確認)</p>
-              <input type="password" name="password_2"/>
+              <input type="password" name="password_2"form="createUser" />
             </div>
             <div className="modal-button">
               <button className="login" onClick={() => handleClickClose()}>ログイン</button>
-              <button className="create" type="submit" id="createUser" formAction="users/create" formMethod="post">新規登録</button>
+              <button className="create" type="submit" id="createUser" form="createUser">新規登録</button>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@
     <% @folders.each do |folder| %>
       <tr>
       　<td class="name-value">
-          <%= link_to(folder.name, "/folders/#{folder.id}") %>
+          <%= link_to(folder.name, "/folders/#{folder.id}/books") %>
         </td>
         <td class="date-value">
           <%= folder.created_at.strftime("%Y-%m-%d %H:%M") %>

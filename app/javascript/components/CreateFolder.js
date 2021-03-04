@@ -34,9 +34,7 @@ class CreateFolder extends React.Component {
               <input type="text" name="folderName" />
             </div>
             <div className="createFolder-modal-button">
-              <button className="create" type="submit">
-              作成
-              </button>
+              <button className="create" type="submit">作成</button>
             </div>
           </div>
         </div>
@@ -45,9 +43,7 @@ class CreateFolder extends React.Component {
       return (
         <div>
           <div className="folder_subMenu">
-            <p onClick={() => {this.handleClickOpen()}}>
-              {this.props.name}
-            </p>
+            <p onClick={() => {this.handleClickOpen()}}>{this.props.name}</p>
             <p>並び替え</p>
           </div>
           {createFolder_modal}
