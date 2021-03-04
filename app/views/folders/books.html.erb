@@ -2,8 +2,13 @@
   <div class="title">
     <h1><%= @folder.name %></h1>
   </div>
-  <%= form_tag() do %>
-    <%= react_component("CreateBook", {name: "本を追加する", folder_name: @folder.name})%>
+  <%= form_tag("/folders/#{@folder.id}/createBook") do %>
+    <%= react_component("CreateBook", {name: "本を追加する", folder: @folder})%>
+  <% end %>
+  <%= form_tag("/folders/#{@folder.id}/updateFolder", id: "updateFolder_#{@folder.id}") do %>
+  <% end %>
+  <%= form_tag("/folders/#{@folder.id}/deleteFolder", id: "deleteFolder_#{@folder.id}") do %>
+  <% end %>
     <%= react_component(
       "FolderManager",
       {name: @folder.name,
@@ -11,7 +16,6 @@
       folderId: @folder.id,
       value: "Folder"}
     )%>
-  <% end %>
 </div>
 <div class="books-table">
   <table>
@@ -28,7 +32,10 @@
     <% @books.each do |book| %>
       <tr>
       　<td class="name-value">
-          <%= form_tag() do %>
+          <%= form_tag("/folders/#{book.id}/updateBook", id: "updateBook_#{book.id}") do %>
+          <% end %>
+          <%= form_tag("/folders/#{book.id}/deleteBook", id: "deleteBook_#{book.id}") do %>
+          <% end %>
             <%= react_component("BookManager", {
               folder_name: @folder.name,
               name: book.name,
@@ -38,7 +45,7 @@
               bookId: book.id,
               value: "Book"
             })%>
-          <% end %>
+
         </td>
         <td class="c_day-value">
           <%= book.c_day.strftime("%m/%d") %>

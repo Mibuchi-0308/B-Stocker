@@ -20,7 +20,7 @@ class FoldersController < ApplicationController
     if @folder.save
       flash[:notice] = "フォルダを編集しました"
     else
-      flash[:notice] = "フォルダの編集に失敗しました"
+      flash[:notice] = "フォルダの編集に失敗しました。内容を確認してください"
     end
     redirect_to("/folders/#{@folder.id}")
   end
@@ -44,7 +44,7 @@ class FoldersController < ApplicationController
   end
 
   def createBook
-    @folder = Folder.find_by(name: params[:folder_name])
+    @folder = Folder.find_by(id: params[:folder_id])
     @book = Book.new(name: params[:book_name],
                     c_day: params[:c_day],
                     i_day: params[:i_day],
@@ -70,13 +70,13 @@ class FoldersController < ApplicationController
     @book.i_day = params[:i_day]
     @book.amount = params[:amount]
 
-    if @book.amount >= 0
+    if @book.amount.to_i >= 0
       @book.save
       flash[:notice] = "書籍が編集されました"
-    elsif @book.amount < 0
+    elsif @book.amount.to_i < 0
       flash[:notice] = "書籍の数量は未定、若しくは0以上でなければなりません"
     elsif !@book.save
-      flash[:notice] = "書籍が編集されませんでした。内容を確認してください"
+      flash[:notice] = "書籍の編集に失敗しました。内容を確認してください"
     end
     redirect_to("/folders/#{@book.folder_id}")
   end

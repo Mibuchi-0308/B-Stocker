@@ -31,7 +31,7 @@ class CreateBook extends React.Component {
             </div>
             <div className="createBook-modal-contents">
               <p>フォルダ名</p>
-              <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
+              <input name="folder_name" type="text" defaultValue={this.props.folder.name} readOnly/>
               <p>書籍名</p>
               <input name="book_name" type="text" />
               <p>出来日</p>
@@ -42,13 +42,13 @@ class CreateBook extends React.Component {
               <input name="amount" type="number" />
             </div>
             <div className="createBook-modal-button">
-                <button
-                  type="submit"
-                  className="create"
-                  formAction={"/folders/createBook"}
+              <button
+                id={`createBook_${this.props.folder.id}`}
+                type="submit"
+                className="create"
                 >
-                新規作成
-                </button>
+              新規作成
+              </button>
             </div>
           </div>
         </div>

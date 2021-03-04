@@ -83,7 +83,7 @@ class FolderManager extends React.Component {
             <button　 onClick={() => this.handleClickDelete()} className="delete" type="button">
               削除
             </button>
-            <button className="OK" id={this.props.folderId + this.props.value} type="submit" formAction={"/folders/" + this.props.folderId + "/update"}>
+            <button className="OK" id={this.props.folderId + this.props.value} type="submit" form={`updateFolder_${this.props.folderId}`}>
               OK
             </button>
           </div>
@@ -101,7 +101,7 @@ class FolderManager extends React.Component {
                 </div>
                 <div className={modalName + "-modal-contents"}>
                   <p>フォルダ名</p>
-                  <input name="folder_name" type="text"  defaultValue={this.props.name} />
+                  <input name="folder_name" type="text"  defaultValue={this.props.name} form={`updateFolder_${this.props.folderId}`} />
                   <p>作成日</p>
                   <input name="folder_created_at" type="text" defaultValue={this.props.created_at} readOnly />
                 </div>
@@ -120,6 +120,7 @@ class FolderManager extends React.Component {
         text={this.props.name + "を削除しますか？"}
         Id={this.props.folderId}
         value={this.props.value}
+        form={`deleteFolder_${this.props.folderId}`}
         />
       break;
       case "close":

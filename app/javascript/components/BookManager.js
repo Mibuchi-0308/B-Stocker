@@ -68,7 +68,7 @@ class BookManager extends React.Component {
                 <p>入荷日</p>
                 <input name="i_day" type="date" defaultValue={this.props.i_day} readOnly/>
                 <p>入荷予定数</p>
-                <input name="amount"type="number" defaultValue={this.props.amount} readOnly/>
+                <input name="amount" type="number" defaultValue={this.props.amount} readOnly/>
                 </div>
                 <div className={modalName + "-modal-button"}>
                   {modalButton}
@@ -89,7 +89,7 @@ class BookManager extends React.Component {
             <button　 onClick={() => this.handleClickDelete()} className="delete" type="button">
               削除
             </button>
-            <button className="OK" id={this.props.bookId + this.props.value} type="submit" formAction={"/folders/" + this.props.bookId + "/updateBook"}>
+            <button className="OK" id={this.props.bookId + this.props.value} type="submit" form={`updateBook_${this.props.bookId}`}>
               OK
             </button>
           </div>
@@ -107,15 +107,15 @@ class BookManager extends React.Component {
                 </div>
                 <div className={modalName + "-modal-contents"}>
                   <p>書籍名</p>
-                  <input name="book_name" type="text"  defaultValue={this.props.name} />
+                  <input name="book_name" type="text"  defaultValue={this.props.name} form={`updateBook_${this.props.bookId}`}/>
                   <p>所属フォルダ</p>
                   <input name="folder_name" type="text" defaultValue={this.props.folder_name} readOnly/>
                   <p>出来日</p>
-                  <input name="c_day" type="date" defaultValue={this.props.c_day} />
+                  <input name="c_day" type="date" defaultValue={this.props.c_day} form={`updateBook_${this.props.bookId}`}/>
                   <p>入荷日</p>
-                  <input name="i_day" type="date" defaultValue={this.props.i_day} />
+                  <input name="i_day" type="date" defaultValue={this.props.i_day} form={`updateBook_${this.props.bookId}`}/>
                   <p>入荷予定数</p>
-                  <input name="amount"type="number" defaultValue={this.props.amount} />
+                  <input name="amount" type="number" defaultValue={this.props.amount} form={`updateBook_${this.props.bookId}`}/>
                 </div>
                 <div className={modalName + "-modal-button"}>
                   {modalButton}
@@ -132,6 +132,7 @@ class BookManager extends React.Component {
         text={this.props.name + "を削除しますか？"}
         Id={this.props.bookId}
         value={this.props.value}
+        form={`deleteBook_${this.props.bookId}`}
         />
       break;
       case "close":

@@ -37,7 +37,7 @@ class ConfirModal extends React.Component {
                 <button onClick={() => this.handleClickClose()} className="quit" type="button">
                   戻る
                 </button>
-                <button className="delete" id={this.props.Id} type="submit" formAction={"/folders/" + this.props.Id + "/delete" + this.props.value}>
+                <button className="delete" id={this.props.Id} type="submit" form={this.props.form}>
                   削除
                 </button>
               </div>
