@@ -7,7 +7,7 @@ class CustomersOrder extends React.Component {
       addList: Array(),
       message: "右の希望書籍をクリックしてください。",
       selectedFolder: "フォルダを選択してください",
-      searchedBooks: ""
+      searchedBooks: this.props.books
     };
   }
 
@@ -45,13 +45,14 @@ class CustomersOrder extends React.Component {
       this.setState({addList: list});
     } else {
       newValue.push(clicked);
-      //ID基準の並べ替え。任意番号だとか、発売日でソートしたほうがよさそう。
+      //フォルダID管理で、本はID基準の並べ替え。任意番号だとか、発売日でソートしたほうがよさそう。
       newValue.sort((a,b) =>{
-        if (a.id < b.id) {
-          return -1;
-        } else {
-          return 1;
-        }
+        if (a.folder_id < b.folder_id) return -1;
+        if (a.folder_id > b.folder_id) return 1;
+
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+
       })
       this.setState({addList: newValue});
     }
@@ -79,33 +80,56 @@ class CustomersOrder extends React.Component {
   }
 
   handleClickSelectFolder(clicked) {
-    let searched;
-    let allBooks = this.props.books;
-    let targetFolder = this.props.folders;
-    searched = allBooks.find((book) => {
-      return (book.folder_id === targetFolder.id)
+    let searchedBooks;
+    let clickedFolder;
+    let books = this.props.books;
+    let folders = this.props.folders;
+
+    clickedFolder = folders.find((folder) => {
+      return (folder.id === clicked)
     });
-    this.setState({selectedFolder: clicked, searchedBooks: searched});
+    searchedBooks = books.filter((book) => {
+      return (book.folder_id === clicked)
+    });
+
+    this.setState({selectedFolder: clickedFolder.name, searchedBooks: searchedBooks});
   }
 
 
   render () {
-    let thisValue;
+    let bookValue;
     let bookList;
+
+    let folderValue;
     let folderList;
+
     let addListObject;
     let addList = this.state.addList;
     let message = this.state.message;
     let folderName = <p>{this.state.selectedFolder}</p>;
 
-    bookList = this.props.books.map((book) => {
-      thisValue = book.name;
+    bookList = this.state.searchedBooks.map((book) => {
+      bookValue = book.name;
       return (
         <div className="bookListValue" key={book.id}>
           <textarea
             key={book.id}
-            defaultValue={thisValue}
+            defaultValue={bookValue}
             onClick={() => {this.handleClickAdd(book.id)}}
+            readOnly
+          />
+        </div>
+      );
+    });
+
+    folderList = this.props.folders.map((folder) => {
+      folderValue = folder.name;
+      return (
+        <div className="bookListValue" key={folder.id}>
+          <textarea
+            key={folder.id}
+            defaultValue={folderValue}
+            onClick={() => {this.handleClickSelectFolder(folder.id)}}
             readOnly
           />
         </div>
@@ -114,15 +138,15 @@ class CustomersOrder extends React.Component {
 
 
     addListObject = addList.map((book)=> {
-      thisValue = book.name;
+      bookValue = book.name;
       return (
         <div className="addListValue" key={book.id}>
           <textarea
-            defaultValue={thisValue}
+            defaultValue={bookValue}
             onClick={() => {this.handleClickRemove(book.id)}}
             readOnly
             name="orderBook[]"
-            id={book.name + "-id:z" + book.id}
+            id={book.name + "-id:" + book.id}
             />
           <textarea
           className="orderBookAmount"
@@ -144,6 +168,8 @@ class CustomersOrder extends React.Component {
         <div className="bookList">
           {folderName}
           {bookList}
+        </div>
+        <div className="folderList">
           {folderList}
         </div>
       </div>
