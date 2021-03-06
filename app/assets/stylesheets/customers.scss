@@ -33,6 +33,28 @@
   }
 }
 
+.orderBookMenu {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  textarea {
+    text-align: center;
+  }
+}
+
+.orderBookMenuHeader {
+  justify-content: center;
+  width: 100%;
+}
+
+.folderList {
+  justify-content: center;
+  width: 50%;
+  textarea {
+    text-align: center;
+  }
+}
+
 .addList {
   justify-content: center;
   width: 50%;
