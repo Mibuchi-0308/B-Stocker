@@ -166,7 +166,10 @@ class CustomersOrder extends React.Component {
           {addListObject}
         </div>
         <div className="orderBookMenu">
-          <div className="orderBookMenuHeader">{folderName}</div>
+          <div className="orderBookMenuHeader">
+            <h2>書籍選択</h2>
+            {folderName}
+          </div>
           <div className="folderList">
             {folderList}
           </div>
