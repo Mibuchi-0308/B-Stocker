@@ -111,28 +111,18 @@ class CustomersOrder extends React.Component {
     bookList = this.state.searchedBooks.map((book) => {
       bookValue = book.name;
       return (
-        <div className="bookListValue" key={book.id}>
-          <textarea
-            key={book.id}
-            defaultValue={bookValue}
-            onClick={() => {this.handleClickAdd(book.id)}}
-            readOnly
-          />
-        </div>
+        <tr className="bookListValue" key={book.id} onClick={() => {this.handleClickAdd(book.id)}}>
+          <td>{book.name}</td>
+        </tr>
       );
     });
 
     folderList = this.props.folders.map((folder) => {
       folderValue = folder.name;
       return (
-        <div className="bookListValue" key={folder.id}>
-          <textarea
-            key={folder.id}
-            defaultValue={folderValue}
-            onClick={() => {this.handleClickSelectFolder(folder.id)}}
-            readOnly
-          />
-        </div>
+        <tr className="folderListValue" key={folder.id} onClick={() => {this.handleClickSelectFolder(folder.id)}}>
+          <td>{folderValue}</td>
+        </tr>
       );
     });
 
@@ -170,12 +160,16 @@ class CustomersOrder extends React.Component {
             <h2>書籍選択</h2>
             {folderName}
           </div>
-          <div className="folderList">
-            {folderList}
-          </div>
-          <div className="bookList">
-            {bookList}
-          </div>
+          <table className="folderList">
+            <tbody>
+              {folderList}
+            </tbody>
+          </table>
+          <table className="bookList">
+            <tbody>
+              {bookList}
+            </tbody>
+          </table>
         </div>
       </div>
     );
