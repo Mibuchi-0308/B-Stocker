@@ -6,7 +6,7 @@ class CustomersOrder extends React.Component {
     this.state = {
       addList: Array(),
       message: "右の希望書籍をクリックしてください。",
-      selectedFolder: "フォルダを選択してください",
+      selectedFolder: "",
       searchedBooks: this.props.books
     };
   }
@@ -105,8 +105,9 @@ class CustomersOrder extends React.Component {
 
     let addListObject;
     let addList = this.state.addList;
+
     let message = this.state.message;
-    let folderName = <p>{this.state.selectedFolder}</p>;
+    let folderName = <p>{`フォルダ名:${this.state.selectedFolder}`}</p>;
 
     bookList = this.state.searchedBooks.map((book) => {
       bookValue = book.name;
@@ -135,14 +136,14 @@ class CustomersOrder extends React.Component {
             defaultValue={bookValue}
             onClick={() => {this.handleClickRemove(book.id)}}
             readOnly
-            name="orderBook[]"
+            name="bookName[]"
             id={book.name + "-id:" + book.id}
             />
           <textarea
           className="orderBookAmount"
             defaultValue={book.amount}
             readOnly
-            name="orderAmount[]"
+            name="bookAmount[]"
             id={book.name + "-amount"}
           />
         </div>

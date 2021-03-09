@@ -1,11 +1,13 @@
 <h1>顧客登録</h1>
-<div class="customer-info">
-  <p>名前</p>
-  <input name="customer_name"></input>
-  <p>TEL</p>
-  <input name="customer_tel"></input>
-</div>
+<%= form_tag("/createOrder") do %>
+  <div class="customer-info">
+    <p>名前</p>
+    <input name="customerName"></input>
+    <p>TEL</p>
+    <input name="tel"></input>
+  </div>
 
-<%= form_tag() do %>
   <%= react_component('CustomersOrder', {books: @hashed_books, folders: @folders}) %>
+
+  <button type="submit">登録する</button>
 <% end %>
