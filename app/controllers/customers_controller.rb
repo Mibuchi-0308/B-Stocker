@@ -55,7 +55,8 @@ class CustomersController < ApplicationController
             amount: order[:amount].to_i,
             #(顧客IDがまだ生成されてないのが問題。)←saveされた時に生成される。解決。
             customer_id: @customer.id,
-            book_id: orderBook.id
+            book_id: orderBook.id,
+            user_id: @currentUser.id
           )
           if !@order.save
             flash[:notice] = "客注書籍に問題があります"
@@ -79,6 +80,6 @@ class CustomersController < ApplicationController
     @customers = Customer.where(user_id: @currentUser.id)
     @books = Book.where(user_id: @currentUser.id)
     @folders = Folder.where(user_id: @currentUser.id)
-    @orders = Order.all
+    @orders = Order.(user_id: @currentUser.id)
   end
 end
