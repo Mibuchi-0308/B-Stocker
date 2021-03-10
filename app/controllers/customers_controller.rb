@@ -62,7 +62,7 @@ class CustomersController < ApplicationController
             break
             render("/customers/new")
           else
-            @order.save 
+            @order.save
           end
         end
         flash[:notice] = "顧客の登録を完了しました"
@@ -73,5 +73,12 @@ class CustomersController < ApplicationController
       end
     end
 
+  end
+
+  def index
+    @customers = Customer.where(user_id: @currentUser.id)
+    @books = Book.where(user_id: @currentUser.id)
+    @folders = Folder.where(user_id: @currentUser.id)
+    @orders = Order.all
   end
 end
