@@ -2,9 +2,9 @@
 <%= form_tag("/createOrder") do %>
   <div class="customer-info">
     <p>名前</p>
-    <input name="customerName"></input>
+    <input name="customerName" placeholder="明林堂　又三郎"></input>
     <p>TEL</p>
-    <input name="tel"></input>
+    <input name="tel" type="tel" placeholder="090-1234-5678"></input>
   </div>
 
   <%= react_component('CustomersOrder', {books: @hashed_books, folders: @folders}) %>

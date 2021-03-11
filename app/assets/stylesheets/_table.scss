@@ -4,11 +4,10 @@ table {
   margin: 0;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 thead, tbody {
+  display: block;
 }
 
 thead {
@@ -16,15 +15,19 @@ thead {
 }
 
 tbody {
-
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 tr {
   display: flex;
+  background-color: white;
+  &:nth-child(even) {
+    background-color: #F0F0F0;
+  }
 }
 
-
-@mixin valueWidth($name, $date, $c_day, $i_day, $amount, $order) {
+@mixin valueWidthFolders($name, $date, $c_day, $i_day, $amount, $order) {
   th {
     background-color: #707070;
     flex: auto;
@@ -51,7 +54,6 @@ tr {
   }
   td {
     flex: auto;
-    background-color: white;
     margin: 1px 1px 0 0;
     width: auto;
     text-align: center;
@@ -77,6 +79,59 @@ tr {
     }
     &.orders-value {
       width: $order;
+    }
+  }
+}
+
+@mixin valueWidthCustomers($date, $customerName, $tel, $orderName, $i_day) {
+  th {
+    background-color: #707070;
+    flex: auto;
+    color: white;
+    margin-right: 1px;
+    &.date {
+      width: $date;
+    }
+    &.customerName {
+      width: $customerName;
+    }
+    &.tel {
+      width: $tel;
+    }
+    &.orderName {
+      width: $orderName;
+    }
+    &.i_day {
+      width: $i_day;
+    }
+  }
+  td {
+    flex: auto;
+    margin: 1px 1px 0 0;
+    width: auto;
+    text-align: center;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    span {
+      background-color: rgba(245, 99, 64, 0.4);
+    }
+    &.dateValue {
+      width: $date;
+    }
+    &.customerNameValue {
+      width: $customerName;
+    }
+    &.telValue {
+      width: $tel;
+    }
+    &.orderNameValue {
+      width: $orderName;
+    }
+    &.i_dayValue {
+      width: $i_day;
     }
   }
 }

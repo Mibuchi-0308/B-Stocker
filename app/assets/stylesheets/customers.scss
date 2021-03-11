@@ -1,6 +1,9 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "modal";
+@import "table";
+
 .customer-info {
   border-bottom: dashed 4px;
   margin-left: 20px;
@@ -91,5 +94,17 @@
   width: 60%;
   height: 85%;
   tr {
+  }
+}
+
+//index
+.customersTable {
+  height: 570px;
+  margin-top: 10px;
+  background-color: #D3D3D3;
+  @include valueWidthCustomers(10%, 20%, 20%, 40%, 10%);
+  a {
+    text-align: left;
+    margin-left: 10px;
   }
 }

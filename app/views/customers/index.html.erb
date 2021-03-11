@@ -1,0 +1,55 @@
+<h1>顧客一覧</h1>
+<table class="customersTable">
+  <thead>
+    <tr>
+      <th class="date">日付</th>
+      <th class="customerName" >名前</th>
+      <th class="tel">TEL</th>
+      <th class="orderName">商品名</th>
+      <th class="i_day">入荷日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <% beforeDate = "" %>
+      <% beforeCustomerName = "" %>
+      <% beforeTel = "" %>
+      <% ordersValue = @orders.where(customer_id: customer.id) %>
+      <% ordersValue.each do |order| %>
+        <% date = order.created_at.strftime("%m/%d") %>
+        <% book = @books.find_by(id: order.book_id) %>
+        <tr class="customerValue">
+          <% if date == beforeDate %>
+            <td class="dateValue">〃</td>
+          <% else %>
+            <td class="dateValue"><%= date %></td>
+            <% beforeDate = date %>
+          <% end %>
+
+          <% if customer.name == beforeCustomerName %>
+            <td class="customerNameValue">〃</td>
+          <% else %>
+            <td class="customerNameValue"><%= customer.name %></td>
+            <% beforeCustomerName = customer.name %>
+          <% end %>
+
+          <% if  customer.tel == beforeTel%>
+            <td class="telValue">〃</td>
+          <% else %>
+            <td class="telValue"><%= customer.tel %></td>
+            <% beforeTel = customer.tel %>
+          <% end %>
+
+          <% if order.amount >= 2 %>
+            <td class="orderNameValue"><%= book.name %><span>x<%= order.amount %></span></td>
+          <% else %>
+            <td class="orderNameValue"><%= book.name %></td>
+          <% end %>
+
+          <td class="i_dayValue"><%= book.i_day.strftime("%m/%d") %></td>
+
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

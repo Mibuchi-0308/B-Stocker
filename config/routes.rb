@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'customers/new' => "customers#new"
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/" => "home#howto"
   get "/top" => "home#top"
@@ -8,6 +6,10 @@ Rails.application.routes.draw do
 
   get "folders/:folder_id/books" => "folders#books"
   get "folders/:user_id/index" => "folders#index"
+
+  get 'customers/new' => "customers#new"
+  get "customers/index" => "customers#index"
+
   post "folders/create" =>"folders#create"
   post "folders/:folder_id/updateFolder" => "folders#updateFolder"
   post "folders/:folder_id/deleteFolder" => "folders#deleteFolder"

@@ -6,25 +6,23 @@
     <%= react_component("CreateFolder", {name: "フォルダ作成"})%>
   <% end %>
 </div>
-<div class="folder-table">
-  <table>
-    <thead>
-      <tr>
-        <th class="name">名前</th>
-        <th class="date">最終更新日</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @folders.each do |folder| %>
-      <tr>
-      　<td class="name-value">
-          <%= link_to(folder.name, "/folders/#{folder.id}/books") %>
-        </td>
-        <td class="date-value">
-          <%= folder.created_at.strftime("%Y-%m-%d %H:%M") %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+<table class="folder-table">
+  <thead>
+    <tr>
+      <th class="name">名前</th>
+      <th class="date">最終更新日</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @folders.each do |folder| %>
+    <tr>
+    　<td class="name-value">
+        <%= link_to(folder.name, "/folders/#{folder.id}/books") %>
+      </td>
+      <td class="date-value">
+        <%= folder.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

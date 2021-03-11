@@ -80,6 +80,7 @@ class CustomersController < ApplicationController
     @customers = Customer.where(user_id: @currentUser.id)
     @books = Book.where(user_id: @currentUser.id)
     @folders = Folder.where(user_id: @currentUser.id)
-    @orders = Order.(user_id: @currentUser.id)
+    @orders = Order.where(user_id: @currentUser.id)
   end
+  
 end
