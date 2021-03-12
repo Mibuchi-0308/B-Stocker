@@ -51,9 +51,22 @@
     background-color: white;
     text-align:　center;
   }
-  tr {
-    background-color: white;
-    margin: 0.5em;
+  thead {
+    tr {
+      background-color: transparent;
+    }
+  }
+  tbody {
+    tr {
+      background-color: white;
+      margin: 0.5em;
+    }
+  }
+  td {
+    border: none;
+  }
+  th {
+    border: none;
   }
 }
 
@@ -106,5 +119,8 @@
   a {
     text-align: left;
     margin-left: 10px;
+  }
+  td {
+
   }
 }

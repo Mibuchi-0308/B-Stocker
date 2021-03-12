@@ -162,11 +162,21 @@ class CustomersOrder extends React.Component {
             {folderName}
           </div>
           <table className="folderList">
+            <thead>
+              <tr className="folderName">
+                <th>フォルダ名</th>
+              </tr>
+            </thead>
             <tbody>
               {folderList}
             </tbody>
           </table>
           <table className="bookList">
+            <thead>
+              <tr className="bookName">
+                <th>書籍名</th>
+              </tr>
+            </thead>
             <tbody>
               {bookList}
             </tbody>

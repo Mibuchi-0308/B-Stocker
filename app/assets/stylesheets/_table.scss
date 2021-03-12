@@ -19,12 +19,17 @@ tbody {
   overflow-y: scroll;
 }
 
+th {
+  border-right: solid white 1px;
+}
+
 tr {
   display: flex;
   background-color: white;
-  &:nth-child(even) {
-    background-color: #F0F0F0;
-  }
+}
+
+td {
+  border-right: solid white 1px;
 }
 
 @mixin valueWidthFolders($name, $date, $c_day, $i_day, $amount, $order) {
@@ -32,7 +37,6 @@ tr {
     background-color: #707070;
     flex: auto;
     color: white;
-    margin-right: 1px;
     &.name {
       width: $name;
     }
@@ -81,6 +85,11 @@ tr {
       width: $order;
     }
   }
+  tr {
+    &:nth-child(even) {
+      background-color: #F0F0F0;
+    }
+  }
 }
 
 @mixin valueWidthCustomers($date, $customerName, $tel, $orderName, $i_day) {
@@ -88,7 +97,6 @@ tr {
     background-color: #707070;
     flex: auto;
     color: white;
-    margin-right: 1px;
     &.date {
       width: $date;
     }
@@ -132,6 +140,11 @@ tr {
     }
     &.i_dayValue {
       width: $i_day;
+    }
+  }
+  tr {
+    &:nth-child(even) {
+      background-color: #F0F0F0;
     }
   }
 }
