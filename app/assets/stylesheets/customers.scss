@@ -118,9 +118,57 @@
   @include valueWidthCustomers(10%, 20%, 20%, 40%, 10%);
   a {
     text-align: left;
-    margin-left: 10px;
+    padding-left: 5px;
   }
   td {
 
+  }
+}
+
+//info
+.customerInfoWrapper {
+  display: flex;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  p {
+    margin-bottom: 0.5em;
+    font-size: 18px;
+  }
+}
+
+.customerInfomation {
+  width: 50%;
+}
+
+.customersOrders {
+  margin-top: 18px;
+  width: 50%;
+  text-align: center;
+  background-color: #BFD8FA;
+}
+
+.customerName, .customerTel {
+  border: solid black 1px;
+  padding-left: 0.5em;
+  width: 400px;
+}
+
+.customerOrdersTitle {
+  margin: 0;
+  background-color: #78ADF4;
+  color: white;
+}
+
+.orderBooks {
+  display: flex;
+  height: 540px;
+  align-items: start;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  p {
+    margin: 0.5em 0 0 0.5em;
+    width: 80%;
+    background-color: white;
   }
 }

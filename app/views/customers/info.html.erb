@@ -1,0 +1,17 @@
+<h1>顧客詳細</h1>
+  <div class="customerInfoWrapper">
+    <div class="customerInfomation">
+      <p>名前</p>
+      <p class="customerName"><%= @customer.name %></p>
+      <p>TEL</p>
+      <p class="customerTel"><%= @customer.name %></p>
+    </div>
+    <div class="customersOrders">
+      <p class="customerOrdersTitle">注文書籍一覧</p>
+      <div class="orderBooks">
+        <% @orders.each do |order| %>
+          <p><%= @books.find_by(id: order.book_id).name %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>

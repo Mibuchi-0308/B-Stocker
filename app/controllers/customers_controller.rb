@@ -80,7 +80,13 @@ class CustomersController < ApplicationController
     @customers = Customer.where(user_id: @currentUser.id)
     @books = Book.where(user_id: @currentUser.id)
     @folders = Folder.where(user_id: @currentUser.id)
-    @orders = Order.where(user_id: @currentUser.id)
+    @orders = Order.where(user_id: @currentUser.id).order(created_at: :desc)
   end
-  
+
+  def info
+    @customer = Customer.find_by(id: params[:customer_id])
+    @orders = Order.where(customer_id: params[:customer_id])
+    @books = Book.where(user_id: @currentUser.id)
+  end
+
 end
