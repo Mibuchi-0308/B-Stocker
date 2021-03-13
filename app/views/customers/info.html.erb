@@ -5,13 +5,20 @@
       <p class="customerName"><%= @customer.name %></p>
       <p>TEL</p>
       <p class="customerTel"><%= @customer.name %></p>
+      <div class="buttonsMenu">
+        <button type="button" onclick="location.href='/customers/<%= @customer.id %>/edit'">編集<!--<img src="/assets/icons/edit.png">--></button>
+        <button type="button" onclick="location.href='/customers/<%= @customer.id %>/edit'">削除</button>
+        </div>
     </div>
     <div class="customersOrders">
       <p class="customerOrdersTitle">注文書籍一覧</p>
       <div class="orderBooks">
+        <% i = 0 %>
         <% @orders.each do |order| %>
           <p><%= @books.find_by(id: order.book_id).name %></p>
+          <% i += 1 %>
         <% end %>
+        <p class="orderCount">合計: <%= i %>冊</p>
       </div>
     </div>
   </div>

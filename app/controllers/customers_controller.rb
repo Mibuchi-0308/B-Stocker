@@ -89,4 +89,19 @@ class CustomersController < ApplicationController
     @books = Book.where(user_id: @currentUser.id)
   end
 
+  def edit
+    #基本的にnewアクションと同じ。
+    @hashed_books = []
+    @customer = Customer.find_by(id: params[:customer_id])
+    @orders = Order.where(customer_id: @customer.id)
+    @books = Book.where(user_id: @currentUser.id)
+    @folders = Folder.where(user_id: @currentUser.id)
+
+    @books.each do |book|
+      book = book.attributes
+      book["amount"] = 1
+      @hashed_books.push(book)
+    end
+
+  end
 end

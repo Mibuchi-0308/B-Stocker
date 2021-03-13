@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'customers/new' => "customers#new"
   get "customers/index" => "customers#index"
   get "customers/:customer_id/info" => "customers#info"
+  get "customers/:customer_id/edit" => "customers#edit"
 
   post "folders/create" =>"folders#create"
   post "folders/:folder_id/updateFolder" => "folders#updateFolder"
