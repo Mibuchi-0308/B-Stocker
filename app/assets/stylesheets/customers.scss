@@ -213,3 +213,22 @@
     margin-left: 270px;
   }
 }
+
+//edit
+.customer-info-wrapper {
+  display: flex;
+  border-bottom: dashed 4px;
+  margin-bottom: 20px;
+  .customer-info {
+    width: 50%;
+    border: none;
+  }
+  .editNow {
+    width: 50%;
+    text-align: center;
+    p {
+      font-size: 80px;
+      margin-top: 60px;
+    }
+  }
+}

@@ -1,1 +1,17 @@
 <h1>顧客編集</h1>
+<%= form_tag("/updateOrder") do %>
+  <div class="customer-info-wrapper">
+    <div class="customer-info">
+      <p>名前</p>
+      <input name="customerName" value=<%= @customer.name %>></input>
+      <p>TEL</p>
+      <input name="tel" type="tel" value=<%= @customer.tel %>></input>
+    </div>
+    <div class="editNow">
+      <p>編集中</p>
+    </div>
+  </div>
+  <%= react_component('EditCustomersOrder', {books: @hashed_books, folders: @folders, orderBooks: @orderBooks}) %>
+
+  <button type="submit">登録する</button>
+<% end %>

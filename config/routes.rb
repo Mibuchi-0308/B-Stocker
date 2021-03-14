@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   post "users/create" => "users#create"
 
   post "/createOrder" => "customers#createOrder"
+  post "/updateOrder" => "customers#updateOrder"
 
 end

@@ -92,6 +92,8 @@ class CustomersController < ApplicationController
   def edit
     #基本的にnewアクションと同じ。
     @hashed_books = []
+    @orderBooks = []
+
     @customer = Customer.find_by(id: params[:customer_id])
     @orders = Order.where(customer_id: @customer.id)
     @books = Book.where(user_id: @currentUser.id)
@@ -102,6 +104,17 @@ class CustomersController < ApplicationController
       book["amount"] = 1
       @hashed_books.push(book)
     end
+
+    @orders.each do |order|
+      orderBook = @books.find_by(id: order.book_id)
+      orderBook = orderBook.attributes
+      orderBook["amount"] = order.amount
+      @orderBooks.push(orderBook)
+    end
+    
+  end
+
+  def updateOrder
 
   end
 end
