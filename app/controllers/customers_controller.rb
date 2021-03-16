@@ -56,7 +56,8 @@ class CustomersController < ApplicationController
             #(顧客IDがまだ生成されてないのが問題。)←saveされた時に生成される。解決。
             customer_id: @customer.id,
             book_id: orderBook.id,
-            user_id: @currentUser.id
+            user_id: @currentUser.id,
+            passed: "no"
           )
           if !@order.save
             flash[:notice] = "客注書籍に問題があります"
