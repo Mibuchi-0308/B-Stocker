@@ -57,7 +57,7 @@ class CustomersController < ApplicationController
             customer_id: @customer.id,
             book_id: orderBook.id,
             user_id: @currentUser.id,
-            passed: "no"
+            passed: "yet"
           )
           if !@order.save
             flash[:notice] = "客注書籍に問題があります"

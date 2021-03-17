@@ -30,11 +30,36 @@
 
 
 .addList {
-  width: 40%;
-  textarea {
-    text-align: center;
+  width: 45%;
+  margin-right: 30px;
+  h2 {
+    font-size: 33px;
+    margin: 0.5em 0.5em 0 0.5em;
+    width: 40%;
+  }
+  p {
+    margin: 0.5em;
+  }
+  input {
+    font-size: 17px;
+    height: 40px;
+    margin-top: 0.4em;
+  }
+
+  .addListValue {
+    display: flex;
+    .orderBookName {
+      vertical-align: middle;
+      width: 80%;
+    }
+    .orderBookAmount {
+      width: 20%;
+      text-align: center;
+    }
   }
 }
+
+
 
 .orderBookMenu {
   height: 550px;
@@ -43,7 +68,7 @@
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: start;
-  width: 60%;
+  width: 55%;
   background-color: #EDEDED;
   p {
     margin: 0.5em 0 0 0;

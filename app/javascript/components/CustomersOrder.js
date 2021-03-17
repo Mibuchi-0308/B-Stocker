@@ -132,16 +132,16 @@ class CustomersOrder extends React.Component {
       bookValue = book.name;
       return (
         <div className="addListValue" key={book.id}>
-          <textarea
+          <input
             defaultValue={bookValue}
             onClick={() => {this.handleClickRemove(book.id)}}
             readOnly
             name="bookName[]"
             id={book.name + "-id:" + book.id}
             />
-          <textarea
+          <input
           className="orderBookAmount"
-            defaultValue={book.amount}
+            value={book.amount}
             readOnly
             name="bookAmount[]"
             id={book.name + "-amount"}

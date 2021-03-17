@@ -132,16 +132,17 @@ class EditCustomersOrder extends React.Component {
       bookValue = book.name;
       return (
         <div className="addListValue" key={book.id}>
-          <textarea
+          <input
+            className="orderBookName"
             defaultValue={bookValue}
             onClick={() => {this.handleClickRemove(book.id)}}
             readOnly
             name="bookName[]"
             id={book.name + "-id:" + book.id}
             />
-          <textarea
-          className="orderBookAmount"
-            defaultValue={book.amount}
+          <input
+            className="orderBookAmount"
+            value={book.amount}
             readOnly
             name="bookAmount[]"
             id={book.name + "-amount"}
@@ -153,6 +154,7 @@ class EditCustomersOrder extends React.Component {
     return (
       <div className="orderList">
         <div className="addList">
+          <h2>注文書籍</h2>
           <p>{message}</p>
           {addListObject}
         </div>
