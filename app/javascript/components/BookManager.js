@@ -129,9 +129,9 @@ class BookManager extends React.Component {
         modal = <ConfirModal
         name="削除"
         className="bookDelete"
-        text={this.props.name + "を削除しますか？"}
+        text={this.props.name}
         Id={this.props.bookId}
-        value={this.props.value}
+        value="delete"
         form={`deleteBook_${this.props.bookId}`}
         />
       break;

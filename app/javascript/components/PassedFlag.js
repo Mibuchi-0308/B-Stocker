@@ -20,9 +20,9 @@ handleClickOpenModal() {
       confirModal = <ConfirModal
       name="お渡し済"
       className="bookPassed"
-      text={this.props.name + "にしますか？"}
+      text={this.props.name}
       Id={this.props.orderId}
-      value={this.props.value}
+      value="pass"
       form={`passsedBook_${this.props.orderId}`}
       />
     }

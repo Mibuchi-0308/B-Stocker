@@ -18,6 +18,23 @@ class ConfirModal extends React.Component {
   render () {
     let modal;
     let visible;
+    let buttonClassName;
+    let buttonName;
+    let doing;
+
+    switch (this.props.value) {
+      case "delete":
+        buttonClassName = "delete"
+        buttonName = "削除"
+        doing = "削除しますか？"
+      break;
+      case "pass":
+        buttonClassName = "OK"
+        buttonName = "OK"
+        doing = "お渡し済にしますか？"
+      break;
+    }
+
     if (this.state.modal) {
       modal = (
         <div>
@@ -31,14 +48,15 @@ class ConfirModal extends React.Component {
                 />
               </div>
               <div className="confirModal-contents">
-                <p>{this.props.text}</p>
+                <p>{this.props.text}を</p>
+                <p>{doing}</p>
               </div>
               <div className="confirModal-button">
                 <button onClick={() => this.handleClickClose()} className="quit" type="button">
                   戻る
                 </button>
-                <button className="delete" id={this.props.Id} type="submit" form={this.props.form}>
-                  削除
+                <button className={buttonClassName} id={this.props.Id} type="submit" form={this.props.form}>
+                  {buttonName}
                 </button>
               </div>
             </div>

@@ -1,4 +1,7 @@
 <h1>顧客詳細</h1>
+<%= form_tag("/customers/#{@customer.id}/deleteCustomer", id: "deleteCustomer_#{@customer.id}") do %>
+<% end %>
+
   <div class="customerInfoWrapper">
     <div class="customerInfomation">
       <p>名前</p>
@@ -6,9 +9,9 @@
       <p>TEL</p>
       <p class="customerTel"><%= @customer.name %></p>
       <div class="buttonsMenu">
-        <button type="button" onclick="location.href='/customers/<%= @customer.id %>/edit'">編集<!--<img src="/assets/icons/edit.png">--></button>
-        <button type="button" onclick="location.href='/customers/<%= @customer.id %>/edit'">削除</button>
-        </div>
+        <div class="editButton"><button  class = "edit" type="button" onclick="location.href='/customers/<%= @customer.id %>/edit'">編集<!--<img src="/assets/icons/edit.png">--></button></div>
+        <%= react_component("CustomerDelete", {name: @customer.name + " 様の情報全て", customerId: @customer.id})%>
+      </div>
     </div>
     <div class="customersOrders">
       <p class="customerOrdersTitle">注文書籍一覧</p>

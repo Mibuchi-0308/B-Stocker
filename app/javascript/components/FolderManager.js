@@ -117,9 +117,9 @@ class FolderManager extends React.Component {
         modal = <ConfirModal
         name="削除"
         className="folderDelete"
-        text={this.props.name + "を削除しますか？"}
+        text={this.props.name}
         Id={this.props.folderId}
-        value={this.props.value}
+        value="delete"
         form={`deleteFolder_${this.props.folderId}`}
         />
       break;

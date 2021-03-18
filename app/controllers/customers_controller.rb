@@ -179,4 +179,18 @@ class CustomersController < ApplicationController
       end
     end
   end
+
+  def delete
+    @customer = Customer.find_by(id: params[:id])
+    @orders = Order.where(customer_id: @customer.id)
+
+    if @orders.destroy_all
+      @customer.destroy
+      flash[:notice] = "#{@customer.name}様の顧客情報が削除されました"
+      redirect_to("/customers/index")
+    else
+      flash[:notice] = "Error! 顧客情報の削除に失敗しました"
+    end
+
+  end
 end

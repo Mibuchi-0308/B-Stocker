@@ -41,8 +41,8 @@
     margin: 0.5em;
   }
   input {
-    font-size: 17px;
-    height: 40px;
+    font-size: 15px;
+    height: 32px;
     margin-top: 0.4em;
   }
 
@@ -188,17 +188,27 @@
     width: 250px;
     vertical-align: middle;
   }
-  img {
-    width: 40%;
-    height: auto;
-    vertical-align: middle;
-    margin-left: 5px;
-  }
 
   .buttonsMenu {
-    display: flex;
     width: 409px;
     align-items: center;
+    button {
+      padding:0;
+      margin: 15px;
+      width: 180px;
+    }
+    .editButton {
+      margin-right: 10px;
+    }
+    .deleteButton {
+      .delete {
+        background: #F56340;
+        box-shadow: 0 4px #627295;
+      }
+      .confirModal-button {
+        @include modal-button;
+      }
+    }
   }
 }
 

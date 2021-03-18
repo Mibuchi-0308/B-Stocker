@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
   post "users/create" => "users#create"
 
+  post "/customers/:customer_id/deleteCustomer" => "customers#delete"
   post "/createOrder" => "customers#createOrder"
   post "/updateOrder" => "customers#updateOrder"
 
