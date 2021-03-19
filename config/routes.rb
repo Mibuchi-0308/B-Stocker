@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "folders/:user_id/index" => "folders#index"
 
   get 'customers/new' => "customers#new"
-  get "customers/index" => "customers#index"
+  get "customers/:user_id/index" => "customers#index"
   get "customers/:customer_id/info" => "customers#info"
   get "customers/:customer_id/edit" => "customers#edit"
 

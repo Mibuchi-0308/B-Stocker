@@ -78,10 +78,10 @@ class CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.where(user_id: @currentUser.id)
-    @books = Book.where(user_id: @currentUser.id)
-    @folders = Folder.where(user_id: @currentUser.id)
-    @orders = Order.where(user_id: @currentUser.id).order(created_at: :desc)
+    @customers = Customer.where(user_id: params[:user_id])
+    @books = Book.where(user_id: params[:user_id])
+    @folders = Folder.where(user_id: params[:user_id])
+    @orders = Order.where(user_id: params[:user_id]).order(created_at: :desc)
   end
 
   def info
@@ -181,7 +181,7 @@ class CustomersController < ApplicationController
   end
 
   def delete
-    @customer = Customer.find_by(id: params[:id])
+    @customer = Customer.find_by(id: params[:customer_id])
     @orders = Order.where(customer_id: @customer.id)
 
     if @orders.destroy_all
@@ -190,6 +190,7 @@ class CustomersController < ApplicationController
       redirect_to("/customers/index")
     else
       flash[:notice] = "Error! 顧客情報の削除に失敗しました"
+      redirect_to("customers/#{@customer.id}/info")
     end
 
   end
