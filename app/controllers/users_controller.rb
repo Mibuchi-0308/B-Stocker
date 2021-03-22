@@ -53,4 +53,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def checkPassword
+    if @currentUser.password == params[:userPassword]
+      flash[:notice] = "編集権限を与えました"
+      session[:userPassword] = @currentUser.password
+      redirect_to("/top")
+    else
+      flash[:notice] = "パスワードが正しくありません"
+      redirect_to("/top")
+    end
+  end
+
 end

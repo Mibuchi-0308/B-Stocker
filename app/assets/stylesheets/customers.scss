@@ -174,7 +174,6 @@
     padding-left: 5px;
   }
   td {
-
   }
 }
 
@@ -217,6 +216,12 @@
     vertical-align: middle;
   }
 
+  .customerName, .customerTel {
+    border: solid black 1px;
+    padding-left: 0.5em;
+    width: 400px;
+  }
+
   .buttonsMenu {
     width: 409px;
     align-items: center;
@@ -247,11 +252,6 @@
   background-color: #BFD8FA;
 }
 
-.customerName, .customerTel {
-  border: solid black 1px;
-  padding-left: 0.5em;
-  width: 400px;
-}
 
 .customerOrdersTitle {
   margin: 0;

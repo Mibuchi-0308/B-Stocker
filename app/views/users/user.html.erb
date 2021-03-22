@@ -1,7 +1,30 @@
 <h1><%= @currentUser.name %>のページ</h1>
-<%= react_component("UserPage",
-                   {userName: @currentUser.name,
-                    email: @currentUser.email,
-                    password: @currentUser.password,
-                    userId: @currentUser.id,
-                    value: "User"}) %>
+
+<% checked = false %>
+<% password = "" %>
+<% if @passwordChecked %>
+  <% checked = true %>
+  <% password = @checkedPassword %>
+<% else %>
+  <% checked =false %>
+  <% password = "" %>
+<% end %>
+
+<% form_tag("/users/#{@currentUser.id}/updateUser", id: "updateUser_#{@currentUser.id}") do %>
+<% end %>
+<% form_tag("/users/#{@currentUser.id}/deleteUser", id: "deleteUser_#{@currentUser.id}") do %>
+<% end %>
+<% if checked %>
+  <%= react_component("UserPage",
+                     {userName: @currentUser.name,
+                      email: @currentUser.email,
+                      password: password,
+                      userId: @currentUser.id,
+                      checked: true}) %>
+<% else %>
+  <%= react_component("UserPage",
+                     {userName: @currentUser.name,
+                      email: @currentUser.email,
+                      password: password,
+                      userId: @currentUser.id}) %>
+<% end %>

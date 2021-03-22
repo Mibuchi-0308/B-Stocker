@@ -187,7 +187,7 @@ class CustomersController < ApplicationController
     if @orders.destroy_all
       @customer.destroy
       flash[:notice] = "#{@customer.name}様の顧客情報が削除されました"
-      redirect_to("/customers/index")
+      redirect_to("/customers/#{@currentUser.id}/index")
     else
       flash[:notice] = "Error! 顧客情報の削除に失敗しました"
       redirect_to("customers/#{@customer.id}/info")
