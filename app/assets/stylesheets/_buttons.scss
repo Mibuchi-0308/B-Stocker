@@ -1,0 +1,67 @@
+@mixin basicButtons {
+  button {
+
+    //inputデザイン初期化
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    //ここまで
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    text-align: center;
+    font-size: 20px;
+    padding: 0.5em 2em;
+    text-decoration: none;
+    color: white;
+    border-radius: 3px;
+    margin: 20px 1em 0 1.3em;
+
+    &.login{
+      background: #3CC33C;
+      box-shadow: 0 4px #5F9872;
+    }
+
+    &.create {
+      background: #668ad8;
+      box-shadow: 0 4px #627295;
+    }
+
+    &.back {
+      background: #668ad8;
+      box-shadow: 0 4px #627295;
+    }
+
+    &.delete {
+      background: #F56340;
+      box-shadow: 0 4px #627295;
+    }
+
+    &.edit {
+      background: #FEA754;
+      box-shadow: 0 4px #627295;
+    }
+
+    &.OK {
+      background: #56B55A;
+      box-shadow: 0 4px #627295;
+    }
+
+    &.quit {
+      background: #3CC33C;
+      box-shadow: 0 4px #5F9872;
+    }
+
+    &.dammy {
+      background: #F0F0F0;
+      box-shadow: #747474;
+    }
+  }
+  button:active {
+    box-shadow: none;
+    position: relative;
+    top: 4px;
+  }
+}
