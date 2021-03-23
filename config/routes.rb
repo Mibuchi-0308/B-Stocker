@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #ホーム
   get "/" => "home#howto"
-  get "/top" => "home#top"
+  get "/menu" => "home#menu"
   get "howto" => "home#howto"
 
-  #フォルダー＆書籍
+  #フォルダー書籍
   get "folders/:folder_id/books" => "folders#books"
   get "folders/:user_id/index" => "folders#index"
 

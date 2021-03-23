@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def top
+  def menu
   end
 
   def howto

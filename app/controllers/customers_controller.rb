@@ -68,7 +68,7 @@ class CustomersController < ApplicationController
           end
         end
         flash[:notice] = "顧客の登録を完了しました"
-        redirect_to("/top")
+        redirect_to("/menu")
       else
         flash[:notice] = "顧客情報の内容に問題があります"
         render("customers/new")
@@ -172,7 +172,7 @@ class CustomersController < ApplicationController
           end
         end
         flash[:notice] = "顧客の登録を完了しました"
-        redirect_to("/top")
+        redirect_to("/menu")
       else
         flash[:notice] = "顧客情報の内容に問題があります"
         render("customers/#{@customer.id}/edit")

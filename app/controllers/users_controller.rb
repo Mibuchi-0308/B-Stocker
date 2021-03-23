@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
     if @user && @user.save
         flash[:notice] = "アカウントを作成しました"
-        redirect_to("/top")
+        redirect_to("/menu")
     else
         flash[:notice] = "アカウントの作成に失敗しました。登録内容を確認してください"
         #できればトップに戻りつつ、ユーザー作成モーダルを開いてレンダーしたい。
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/top")
+      redirect_to("/menu")
     else
       flash[:notice] = "ログインに失敗しました。入力内容を確認してください"
       #できればトップに戻りつつ、ログインモーダルを開いてレンダーしたい。
@@ -57,10 +57,10 @@ class UsersController < ApplicationController
     if @currentUser.password == params[:userPassword]
       flash[:notice] = "編集権限を与えました"
       session[:userPassword] = @currentUser.password
-      redirect_to("/top")
+      redirect_to("/menu")
     else
       flash[:notice] = "パスワードが正しくありません"
-      redirect_to("/top")
+      redirect_to("/menu")
     end
   end
 
