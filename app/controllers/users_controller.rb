@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+before_action :ensure_correct_user, {only: [:update, :delete]}
+before_action :forbid_login_user, {only: [:login]}
+before_action :authenticate_user, {only: [:update, :delete]}
+
 
   def create
     if params[:password_1] == params[:password_2]
@@ -53,14 +57,43 @@ class UsersController < ApplicationController
     end
   end
 
-  def checkPassword
-    if @currentUser.password == params[:userPassword]
+  def delete
+    @user = User.find_by(id: params[:user_id])
+    @folders = Folder.where(user_id: @user.id)
+    @books = Book.where(user_id: @user.id)
+    @customers = Customer.where(user_id: @user.id)
+    @orders = Order.where(user_id: @user.id)
+    if @user
+      @folders.destroy_all
+      @books.destroy_all
+      @customers.destroy_all
+      @orders.destroy_all
+      @user.destroy
+      flash[:notice] = "#{@user.name}様の情報を全て削除しました"
+      redirect_to("/")
+    else
+      flash[:notice] = "ユーザーを定義できませんでした。なんらかの問題があります"
+    end
+  end
+
+  def passOfPassword
+    @user = User.find_by(id: params[:user_id])
+    if @user.password == params[:userPassword]
       flash[:notice] = "編集権限を与えました"
       session[:userPassword] = @currentUser.password
-      redirect_to("/menu")
+      redirect_to("/users/#{@currentUser.id}")
     else
       flash[:notice] = "パスワードが正しくありません"
-      redirect_to("/menu")
+      redirect_to("/users/#{@currentUser.id}")
+    end
+  end
+
+  def passOfPassword_remove
+    session[:userPassword] = nil
+    @checkedPassword = session[:userPassword]
+    if @checkedPassword == nil
+      flash[:notice] = "編集権限を停止しました"
+      redirect_to("/users/#{@currentUser.id}")
     end
   end
 

@@ -19,11 +19,14 @@ Rails.application.routes.draw do
 
   #ユーザー
   get "users/:user_id" => "users#user"
+  get "users/:user_id/removePassOfPassword" => "users#passOfPassword_remove"
 
   post "login" => "users#login"
   post "logout" => "users#logout"
   post "users/create" => "users#create"
-  post "users/checkPassword" =>"users#checkPassword"
+  post "users/:user_id/updateUser" => "users#update"
+  post "users/:user_id/deleteUser" => "users#delete"
+  post "users/:user_id/passOfPassword" =>"users#passOfPassword"
 
   #顧客＆オーダー
   get 'customers/new' => "customers#new"

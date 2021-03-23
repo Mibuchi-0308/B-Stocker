@@ -1,8 +1,36 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "buttons";
+
 
 .userContents-wrapper {
   text-align: center;
   font-size: 24px;
+}
+
+.userInfo {
+  font-size: 20px;
+  width: 350px;
+  height: 30px;
+}
+
+.userContents-buttons {
+  @include basicButtons;
+  img {
+    width: 2%;
+    height: auto;
+  }
+  .passOfPassword {
+    margin: 0 auto;
+    width: 40%;
+    background: #DAF3F7;
+    p {
+      margin: 20px 0 0 0;
+    }
+    .formal {
+      margin: 1em 2em;
+      font-size: 13px;
+    }
+  }
 }

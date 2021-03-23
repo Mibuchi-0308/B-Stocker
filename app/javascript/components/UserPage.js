@@ -23,14 +23,6 @@ class UserPage extends React.Component {
     this.setState({mode: "show"});
   }
 
-  handleChangeCheckPassword(pass) {
-    if (pass === this.props.password) {
-      this.setState({checkedPass: true});
-    } else {
-      this.setState({checkedPass: false});
-    }
-  }
-
   render() {
     let contents;
     let modal;
@@ -39,15 +31,21 @@ class UserPage extends React.Component {
     if (this.props.checked) {
       buttons = (
         <div className="userContents-buttons">
-          <button onClick={() => this.handleClickDelete()}>アカウント削除</button>
-          <button onClick={() => this.handleClickEdit()}>編集する</button>
+          <button className="delete" onClick={() => this.handleClickDelete()}>アカウント削除</button>
+          <button className="edit" onClick={() => this.handleClickEdit()}>アカウント編集</button>
         </div>
       );
     } else {
       buttons = (
         <div className="userContents-buttons">
-          <button className="dammy">アカウント削除</button>
-          <button className="dammy">編集する</button>
+          <div className="passOfPassword">
+            <p>パスワード認証</p>
+            <input name="userPassword" form={`passOfPassword_${this.props.userId}`} />
+            <button className="formal" type="submit" form={`passOfPassword_${this.props.userId}`}>認証する</button>
+          </div>
+          <img src="/assets/icons/lock.png"/>
+          <button className="dammy" type="button">アカウント削除</button>
+          <button className="dammy" type="button">アカウント編集</button>
         </div>
       );
     }
@@ -56,15 +54,13 @@ class UserPage extends React.Component {
       case "show":
       modal = ""
       contents = (
-        <div className="userContents-show">
+        <div className="userContents">
           <p>ユーザーネーム</p>
-          <input defaultValue={this.props.userName} readOnly/>
+          <input className="userInfo" defaultValue={this.props.userName} readOnly/>
           <p>メールアドレス</p>
-          <input defaultValue={this.props.email} readOnly/>
+          <input className="userInfo" defaultValue={this.props.email} readOnly/>
           <p>パスワード</p>
-          <input defaultValue="secret" readOnly/>
-          <p>パスワード認証</p>
-          <input onChange={(event) => handleChangeCheckPassword(event.target.value)}/>
+          <input className="userInfo" defaultValue="secret" readOnly/>
           {buttons}
         </div>
       );
@@ -72,11 +68,15 @@ class UserPage extends React.Component {
       case "edit":
       modal = ""
       contents = (
-        <div className="userContents-edit">
+        <div className="userContents">
           <p>ユーザーネーム</p>
-          <input defaultValue={this.props.userName} />
+          <input className="userInfo" defaultValue={this.props.userName} />
           <p>メールアドレス</p>
-          <input defaultValue={this.props.email} />
+          <input className="userInfo" defaultValue={this.props.email} />
+          <p>パスワード</p>
+          <input className="userInfo" type="password" />
+          <p>パスワード(再確認)</p>
+          <input className="userInfo" type="password" />
           {buttons}
         </div>
       )
@@ -96,7 +96,7 @@ class UserPage extends React.Component {
             </div>
             <div className="deleteUserModal-Buttons">
               <button type="button" onClick={() => handleClickShow()}>戻る</button>
-              <button className="delete" type="submit" from={`deleteUser_${this.props.userId}`}>アカウント削除</button>
+              <button className="delete" type="submit" form={`deleteUser_${this.props.userId}`}>アカウント削除</button>
             </div>
           </div>
         </div>

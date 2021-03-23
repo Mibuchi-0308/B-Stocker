@@ -55,8 +55,12 @@
     }
 
     &.dammy {
-      background: #F0F0F0;
+      background: #A2A2A2;
       box-shadow: #747474;
+    }
+    &.formal {
+      background: #058E9B;
+      box-shadow: #287F8E;
     }
   }
   button:active {

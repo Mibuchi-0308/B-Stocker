@@ -23,6 +23,9 @@
             <%= form_tag("/login", id: :login) do %>
             <% end %>
             <ul>
+              <% if @checkedPassword %>
+                <li><%= link_to("権限停止", "/users/#{@currentUser.id}/removePassOfPassword") %></li>
+              <% end %>
               <% if @currentUser %>
                 <li><%= link_to(@currentUser.name, "/users/#{@currentUser.id}")%></li>
                 <li><%= link_to("ログアウト", "/logout", {method: :post}) %></li>
