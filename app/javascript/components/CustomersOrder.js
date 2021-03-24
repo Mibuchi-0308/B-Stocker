@@ -153,7 +153,9 @@ class CustomersOrder extends React.Component {
     return (
       <div className="orderList">
         <div className="addList">
-          <p>{message}</p>
+          <p className="addListMessage">{message}</p>
+          <p className="addListBookName">書籍名</p>
+          <p className="addListBookAmount">数量</p>
           {addListObject}
         </div>
         <div className="orderBookMenu">
