@@ -59,8 +59,6 @@
 .addList {
   width: 45%;
   margin-right: 30px;
-  display: flex;
-  flex-wrap: wrap;
   h2 {
     font-size: 33px;
     margin: 0.5em 0.5em 0 0.5em;
@@ -75,31 +73,20 @@
     margin-top: 0.4em;
   }
 
- .addListBookName {
-   width: 30%;
- }
-
- .addListBookAmount {
-   width: 60%;
- }
-
-  .addListMessage {
-    width: 100%;
-    height: 50px;
+  .orderBookName{
+    width: 350px;
   }
 
-  .addListValue {
-    display: flex;
-    align-items: center;
-    .orderBookName {
-      vertical-align: middle;
-      width: 80%;
-    }
-    .orderBookAmount {
-      width: 20%;
-      text-align: center;
-    }
+  .orderBookAmount {
+    text-align: center;
+    background: #5B90D8;
+    border-radius: 0 24px 24px 0;
+    width: 40px;
+    height: 28px;
+    border: none;
+    color: white;
   }
+
 }
 
 

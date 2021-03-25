@@ -73,7 +73,7 @@ class EditCustomersOrder extends React.Component {
       this.setState({addList: unClicked, message: switchMessage});
     } else {
       clicked.amount --;
-      switchMessage = `『${clicked.name}』の数量を客注リストから削減しました。`
+      switchMessage = `『${clicked.name}』の数量を1減らしました。`
       this.setState({addList: list, message: switchMessage});
     }
 
