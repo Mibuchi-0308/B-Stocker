@@ -1,11 +1,7 @@
-<div class="folder-menu">
-  <div class="title">
-    <h1>フォルダ一覧</h1>
-  </div>
-  <%= form_tag("/folders/create") do %>
-    <%= react_component("CreateFolder", {name: "フォルダ作成"})%>
-  <% end %>
-</div>
+<h1>フォルダ一覧</h1>
+<%= form_tag("/folders/create") do %>
+  <%= react_component("CreateFolder", {name: "フォルダ作成"})%>
+<% end %>
 <table class="folder-table">
   <thead>
     <tr>

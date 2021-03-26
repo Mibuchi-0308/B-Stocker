@@ -7,7 +7,7 @@
       <p>名前</p>
       <p class="customerName"><%= @customer.name %></p>
       <p>TEL</p>
-      <p class="customerTel"><%= @customer.name %></p>
+      <p class="customerTel"><%= @customer.tel %></p>
       <div class="buttonsMenu">
         <div class="editButton"><button  class = "edit" type="button" onclick="location.href='/customers/<%= @customer.id %>/edit'">編集<!--<img src="/assets/icons/edit.png">--></button></div>
         <%= react_component("CustomerDelete", {name: @customer.name + " 様の情報全て", customerId: @customer.id})%>
