@@ -56,12 +56,10 @@ class CreateBook extends React.Component {
 
       return (
         <div>
-          <div
-            className="hs-element"
-            onClick={() => {this.handleClickOpen()}}>
-            <p>{this.props.name}</p>
-            </div>
-            {createBook_modal}
+          <button className="create openButton"　onClick={() => {this.handleClickOpen()}}>
+            {this.props.name}
+          </button>
+          {createBook_modal}
         </div>
       );
   }

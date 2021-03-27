@@ -41,9 +41,9 @@ class CreateFolder extends React.Component {
       );}
 
       return (
-        <div className="folder_subMenu">
-          <button type="button" className="create" onClick={() => {this.handleClickOpen()}}>{this.props.name}</button>
-          <button type="button" className="dammy">並び替え</button>
+        <div className="foldersSubMenu">
+          <button type="button" className="create openButton" onClick={() => {this.handleClickOpen()}}>{this.props.name}</button>
+          <button type="button" className="dammy openButton">並び替え</button>
           {createFolder_modal}
         </div>
       );

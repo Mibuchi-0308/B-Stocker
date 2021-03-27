@@ -130,9 +130,9 @@ class FolderManager extends React.Component {
 
     return (
       <div>
-        <div onClick={()=>{this.handleClickInfo()}}>
+        <button className="edit openButton" onClick={()=>{this.handleClickInfo()}}>
           フォルダ詳細
-        </div>
+        </button>
         {modal}
       </div>
     );

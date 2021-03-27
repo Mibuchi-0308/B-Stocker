@@ -6,19 +6,19 @@
 @import "buttons";
 
 h1 {
-  width: 300px
+}
+
+//folders,booksのメニュー用
+@include basicButtons;
+.openButton {
+  height: 30px;
+  width: 150px;
+  font-size: 14px;
 }
 
 //index
-
 .folder_subMenu {
   width: 500px;
-  @include basicButtons;
-  button {
-    height: 30px;
-    width: 150px;
-    font-size: 14px;
-  }
 }
 
 
@@ -208,10 +208,20 @@ h1 {
 }
 
 
-//folderのtable
+//folders
+.foldersMenu {
+  display: flex;
+  align-items: center;
+}
+
+.foldersSubMenu {
+  width: 500px;
+  margin-left: 40px;
+  display: flex;
+}
+
 .folder-table {
   height: 570px;
-  margin-top: 10px;
   background-color: #D3D3D3;
   @include valueWidthFolders(70%, 30%, 0%, 0%, 0%, 0%);
   a {
@@ -226,10 +236,20 @@ h1 {
 
 
 
-//booksのtable
+//books
+.booksMenu {
+  display: flex;
+  align-items: center;
+}
+
+.booksSubMenu {
+  width: 500px;
+  margin-left: 40px;
+  display: flex;
+}
+
 .books-table {
   height: 570px;
-  margin-top: 10px;
   background-color: #D3D3D3;
   @include valueWidthFolders(40%, 0%, 10%, 10%, 10%, 10%);
 }

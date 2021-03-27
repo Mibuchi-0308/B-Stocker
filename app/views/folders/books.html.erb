@@ -1,26 +1,27 @@
-<div class="folder-menu">
-  <div class="title">
-    <h1><a href="/folders/<%= @currentUser.id %>/index"><%= @folder.name %></a></h1>
+<div class="booksMenu">
+  <h1><a href="/folders/<%= @currentUser.id %>/index"><%= @folder.name %></a></h1>
+  <div class="booksSubMenu">
+    <%= form_tag("/folders/#{@folder.id}/createBook") do %>
+      <%= react_component("CreateBook", {name: "本を追加する", folder: @folder})%>
+    <% end %>
+
+    <%= form_tag("/folders/#{@folder.id}/updateFolder", id: "updateFolder_#{@folder.id}") do %>
+    <% end %>
+    <%= form_tag("/folders/#{@folder.id}/deleteFolder", id: "deleteFolder_#{@folder.id}") do %>
+    <% end %>
+      <%= react_component(
+        "FolderManager",
+        {name: @folder.name,
+        created_at: @folder.created_at.strftime("%m月%d日 %H時%M分"),
+        folderId: @folder.id,
+        value: "Folder"}
+      )%>
   </div>
-  <%= form_tag("/folders/#{@folder.id}/createBook") do %>
-    <%= react_component("CreateBook", {name: "本を追加する", folder: @folder})%>
-  <% end %>
-  <%= form_tag("/folders/#{@folder.id}/updateFolder", id: "updateFolder_#{@folder.id}") do %>
-  <% end %>
-  <%= form_tag("/folders/#{@folder.id}/deleteFolder", id: "deleteFolder_#{@folder.id}") do %>
-  <% end %>
-    <%= react_component(
-      "FolderManager",
-      {name: @folder.name,
-      created_at: @folder.created_at.strftime("%m月%d日 %H時%M分"),
-      folderId: @folder.id,
-      value: "Folder"}
-    )%>
 </div>
 <table class="books-table">
   <thead>
     <tr>
-      <th class="name">名前</th>
+      <th class="name">書籍名</th>
       <th class="c_day">出来日</th>
       <th class="i_day">入荷日</th>
       <th class="amount">入荷数</th>
