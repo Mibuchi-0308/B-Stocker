@@ -1,5 +1,5 @@
 <h1>顧客編集</h1>
-<%= form_tag("/updateOrder") do %>
+<%= form_tag("/customers/#{@customer.id}/updateOrder", id: "updateOrder") do %>
   <div class="customer-info-wrapper">
     <div class="customer-info">
       <p>名前</p>
@@ -13,5 +13,7 @@
   </div>
   <%= react_component('EditCustomersOrder', {books: @hashed_books, folders: @folders, orderBooks: @orderBooks}) %>
 
-  <button type="submit" class="decision">登録する</button>
+  <div class="decision_wrapper">
+    <button type="submit" class="decision" form="updateOrder">登録する</button>
+  </div>
 <% end %>

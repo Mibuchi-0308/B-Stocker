@@ -1,4 +1,8 @@
 class FoldersController < ApplicationController
+before_action :authenticate_user, {only: [:index, :books]}
+before_action :ensure_correct_folder, {only: [:updateFolder, :deleteFolder]}
+before_action :ensure_correct_book, {only: [:updateBook, :deleteBook]}
+
   def index
     @folders = Folder.where(user_id: @currentUser.id)
   end
@@ -89,6 +93,23 @@ class FoldersController < ApplicationController
       flash[:notice] = "書籍の削除に失敗しました"
     end
     redirect_to("/folders/#{@book.folder_id}/books")
+  end
+
+  #権限確認
+  def ensure_correct_folder
+    @folder = Folder.find_by(id: params[:folder_id])
+    if @currentUser.id != @folder.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to("/")
+    end
+  end
+
+  def ensure_correct_book
+    @book = Book.find_by(id: params[:book_id])
+    if @currentUser.id != @book.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to("/")
+    end
   end
 
 end

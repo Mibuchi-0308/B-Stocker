@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-before_action :ensure_correct_user, {only: [:update, :delete]}
+before_action :authenticate_user, {only: [:show]}
 before_action :forbid_login_user, {only: [:login]}
-before_action :authenticate_user, {only: [:update, :delete]}
+before_action :ensure_correct_user, {only: [:update, :delete]}
 
+  def show
+  end
 
   def create
     if params[:password_1] == params[:password_2]
@@ -94,6 +96,21 @@ before_action :authenticate_user, {only: [:update, :delete]}
     if @checkedPassword == nil
       flash[:notice] = "編集権限を停止しました"
       redirect_to("/users/#{@currentUser.id}")
+    end
+  end
+
+  #権限確認
+  def forbid_login_user
+    if @currentUser
+      flash[:notice] = "既にログインしています"
+      redirect_to("/users/#{@cuurentUser.id}")
+    end
+  end
+
+  def ensure_correct_user
+    if @currentUser.id != params[:user_id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/menu")
     end
   end
 

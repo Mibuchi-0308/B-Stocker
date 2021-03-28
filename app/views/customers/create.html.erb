@@ -1,5 +1,5 @@
 <h1>顧客登録</h1>
-<%= form_tag("/createOrder") do %>
+<%= form_tag("/createOrder", id: "createOrder") do %>
   <div class="customer-info">
     <p>名前</p>
     <input name="customerName" placeholder="明林堂　又三郎"></input>
@@ -8,5 +8,7 @@
   </div>
 
   <%= react_component('CustomersOrder', {books: @hashed_books, folders: @folders}) %>
-  <button type="submit" class="decision">登録する</button>
+  <div class="decision_wrapper">
+    <button type="submit" class="decision" form="createOrder">登録する</button>
+  <div>
 <% end %>

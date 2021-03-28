@@ -1,5 +1,16 @@
 class CustomersController < ApplicationController
-  def new
+before_action :authenticate_user, {only: [:create, :createOrder]}
+before_action :ensure_correct_user, {only: [:index]}
+before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOrder]}
+
+  def index
+    @customers = Customer.where(user_id: params[:user_id])
+    @books = Book.where(user_id: params[:user_id])
+    @folders = Folder.where(user_id: params[:user_id])
+    @orders = Order.where(user_id: params[:user_id]).order(created_at: :desc)
+  end
+
+  def create
     @hashed_books = []
     @books = Book.where(user_id: @currentUser.id)
     @folders = Folder.where(user_id: @currentUser.id)
@@ -44,7 +55,7 @@ class CustomersController < ApplicationController
       flag = "ok"
     else
       flash[:notice] = "書籍の登録が空です"
-      render("/customers/new")
+      render("/customers/create")
     end
 
     if flag === "ok"
@@ -62,7 +73,7 @@ class CustomersController < ApplicationController
           if !@order.save
             flash[:notice] = "客注書籍に問題があります"
             break
-            render("/customers/new")
+            render("/customers/create")
           else
             @order.save
           end
@@ -71,17 +82,10 @@ class CustomersController < ApplicationController
         redirect_to("/menu")
       else
         flash[:notice] = "顧客情報の内容に問題があります"
-        render("customers/new")
+        render("customers/create")
       end
     end
 
-  end
-
-  def index
-    @customers = Customer.where(user_id: params[:user_id])
-    @books = Book.where(user_id: params[:user_id])
-    @folders = Folder.where(user_id: params[:user_id])
-    @orders = Order.where(user_id: params[:user_id]).order(created_at: :desc)
   end
 
   def info
@@ -127,11 +131,9 @@ class CustomersController < ApplicationController
     end
     #ここまで
 
-    @customer = Customer.new(
-      name: params[:customerName],
-      tel: params[:tel],
-      user_id: @currentUser.id
-    )
+    @customer = Customer.find_by(id: params[:customer_id])
+    @customer.name = params[:customerName]
+    @customer.tel = params[:tel]
 
     flag = "default"
     orders = []
@@ -149,7 +151,7 @@ class CustomersController < ApplicationController
       flag = "ok"
     else
       flash[:notice] = "書籍の登録が空です"
-      render("/customers/new")
+      render("/customers/edit")
     end
 
     if flag === "ok"
@@ -192,6 +194,22 @@ class CustomersController < ApplicationController
       flash[:notice] = "Error! 顧客情報の削除に失敗しました"
       redirect_to("customers/#{@customer.id}/info")
     end
-
   end
+
+  #検証用
+  def ensure_correct_user
+    if @currentUser.id != params[:user_id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/menu")
+    end
+  end
+
+  def ensure_correct_customer
+    @customer = Customer.find_by(id: params[:customer_id])
+    if @currentUser.id != @customer.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to("/menu")
+    end
+  end
+
 end

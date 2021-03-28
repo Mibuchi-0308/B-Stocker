@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post "folders/:book_id/deleteBook" => "folders#deleteBook"
 
   #ユーザー
-  get "users/:user_id" => "users#user"
+  get "users/:user_id" => "users#show"
   get "users/:user_id/removePassOfPassword" => "users#passOfPassword_remove"
 
   post "login" => "users#login"
@@ -29,13 +29,14 @@ Rails.application.routes.draw do
   post "users/:user_id/passOfPassword" =>"users#passOfPassword"
 
   #顧客＆オーダー
-  get 'customers/new' => "customers#new"
+  get "customers/create" => "customers#create"
   get "customers/:user_id/index" => "customers#index"
   get "customers/:customer_id/info" => "customers#info"
   get "customers/:customer_id/edit" => "customers#edit"
 
-  post "/customers/:customer_id/deleteCustomer" => "customers#delete"
   post "/createOrder" => "customers#createOrder"
-  post "/updateOrder" => "customers#updateOrder"
+  post "/customers/:customer_id/deleteCustomer" => "customers#delete"
+  post "/customers/:customer_id/updateOrder" => "customers#updateOrder"
+
 
 end

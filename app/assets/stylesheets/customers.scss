@@ -6,10 +6,13 @@
 @import "buttons";
 
 //汎用
-.decision {
+.decision_wrapper {
+  //divで囲わないと、positionがfixedのbuttonは機能しない
   position: fixed;
   bottom: 20px;
   left: 41%;
+}
+.decision {
   //inputデザイン初期化
   background-color: transparent;
   border: none;
@@ -30,7 +33,6 @@
 
   background-color: #5B90D8;
 }
-
 
 .customer-info {
   border-bottom: dashed 4px;
