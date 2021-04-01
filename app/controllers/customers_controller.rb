@@ -91,7 +91,27 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
   def info
     @customer = Customer.find_by(id: params[:customer_id])
     @orders = Order.where(customer_id: params[:customer_id])
-    @books = Book.where(user_id: @currentUser.id)
+
+    @incompleteOrders = @orders.where(passed: "yet")
+    @passedOrders = @orders.where(passed: "done")
+
+    @orderBooks = []
+    @orders.each do |order|
+      orderBook = Book.find_by(id: order.book_id)
+      @orderBooks.push(orderBook)
+    end
+
+    @i_books = []
+    @incompleteOrders.each do |i_order|
+      i_book = Book.find_by(id: i_order.book_id)
+      @i_books.push(i_book)
+    end
+
+    @p_books = []
+    @passedOrders.each do |p_order|
+      p_book = Book.find_by(id: p_order.book_id)
+      @p_books.push(p_book)
+    end
   end
 
   def edit

@@ -4,14 +4,16 @@ class OrderPassed extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
+    orderBooks: Array(),
     passedItems: Array(),
   };}
 
   handleClickPassed(value) {
-    const newPassedItems = this.state.passedItems.slice();
-    let clicked = this.props.books.find((book) => {
-      return (book.id === value)
+    const passedItems = this.state.passedItems.slice();
+    let clicked = this.props.orderBooks.find((orderBook) => {
+      return (orderBook.id === value)
     });
+
   }
 
   handleClickUnPassed(value) {
@@ -19,24 +21,29 @@ class OrderPassed extends React.Component {
   }
 
   render () {
-    let orderBooksValue;
-    let orderBook;
+    let orderBooks;
+    let i_book;
+    let p_book;
     let i = 0;
 
-    orderBooksValue = this.props.orders.map((order) => {
-      orderBook = this.props.books.find((book) => {
-        return (book.id === order.book_id);
-      });
-      i ++;
+    i_book = this.props.i_books.map((book) => {
       return (
-        <p key={orderBook.id} onClick={() => handleClickPassed(orderBook.id)}>{orderBook.name}</p>
+        <p key={book.id}>{book.name}</p>
       );
-    });
+    })
+
+    p_book = this.props.p_books.map((book) => {
+      return (
+        <p key={book.id}>{book.name}</p>
+      );
+    })
 
     return (
       <div className="orderBooks">
-        {orderBooksValue}
-        <p>合計{i}冊</p>
+        {i_book}
+        {p_book}
+        <p className="orderCount">合計{i}冊</p>
+        <button type="button" className="dammy">お渡し済にする</button>
       </div>
     );
   }

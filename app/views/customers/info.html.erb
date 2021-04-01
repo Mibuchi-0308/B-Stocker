@@ -17,6 +17,11 @@
     </div>
     <div class="customersOrders">
       <p class="customerOrdersTitle">注文書籍一覧</p>
-      <%= react_component("OrderPassed", {books: @books, orders: @orders}) %>
+      <%= react_component("OrderPassed", {
+        orders: @orders,
+        orderBooks: @orderBooks,
+        i_books: @i_books,
+        p_books: @p_books
+      }) %>
     </div>
   </div>
