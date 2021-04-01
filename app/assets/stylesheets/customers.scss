@@ -252,7 +252,7 @@
 .orderBooks {
   display: flex;
   height: 540px;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -264,6 +264,10 @@
   .orderCount {
     width: 40%;
     margin-left: 270px;
+  }
+  .dammy {
+    width: 50%;
+    font-size: 14px;
   }
 }
 
