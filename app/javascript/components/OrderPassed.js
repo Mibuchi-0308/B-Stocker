@@ -5,20 +5,49 @@ class OrderPassed extends React.Component {
   super(props);
   this.state = {
     orderBooks: Array(),
-    passedItems: Array(),
+    passed: Array(),
+    unpassed: Array(),
   };}
 
-  handleClickPassed(value) {
-    const passedItems = this.state.passedItems.slice();
-    let clicked = this.props.orderBooks.find((orderBook) => {
-      return (orderBook.id === value)
+  verificationSameBook(bookValue, status) {
+    let includeSameBook;
+    switch(status);
+      case "yet":
+        includeSameBook = this.state.passed.find((book) => {
+          return (book.id === bookValue.id)
+        });
+        if (includeSameBook) {
+
+        } else {
+
+        }
+  }
+
+  handleClickChangeStatus(id, status) {
+    let changeToPassed = this.state.passed.slice();
+    let changeToUnpassed = this.state.unpassed.slice();
+
+    let bookValue = this.props.orderBooks.find((book) => {
+      return (book.id === id)
     });
 
+    let includeSameBook = this.state.passed.find((book) => {
+      return (book.id === bookValue.id)
+    });
+
+    switch (status) {
+      case "yet":
+        changeToPassed.push(bookValue);
+        this.setState({passed: changeToPassed});
+      break;
+      case "passed":
+        changeToUnpassed.push(bookValue);
+        this.setState({unpassed: changeToUnpassed});
+      break;
+    }
   }
 
-  handleClickUnPassed(value) {
 
-  }
 
   render () {
     let orderBooks;
@@ -28,13 +57,17 @@ class OrderPassed extends React.Component {
 
     i_book = this.props.i_books.map((book) => {
       return (
-        <p key={book.id}>{book.name}</p>
+        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, "yet")}}>
+          {book.name}
+        </p>
       );
     })
 
     p_book = this.props.p_books.map((book) => {
       return (
-        <p key={book.id}>{book.name}</p>
+        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, "passed")}}>
+          {book.name}
+        </p>
       );
     })
 
