@@ -5,13 +5,13 @@ class OrderPassed extends React.Component {
   super(props);
   this.state = {
     orderBooks: Array(),
-    passed: Array(),
-    unpassed: Array(),
+    passed: this.props.p_books,
+    unpassed: this.props.i_books,
   };}
 
   verificationSameBook(bookValue, status) {
     let includeSameBook;
-    switch(status);
+    switch (status) {
       case "yet":
         includeSameBook = this.state.passed.find((book) => {
           return (book.id === bookValue.id)
@@ -21,6 +21,7 @@ class OrderPassed extends React.Component {
         } else {
 
         }
+      }
   }
 
   handleClickChangeStatus(id, status) {
@@ -31,22 +32,26 @@ class OrderPassed extends React.Component {
       return (book.id === id)
     });
 
-    let includeSameBook = this.state.passed.find((book) => {
+    let includeSamePassedBook = this.state.passed.find((book) => {
       return (book.id === bookValue.id)
     });
 
-    switch (status) {
-      case "yet":
-        changeToPassed.push(bookValue);
-        this.setState({passed: changeToPassed});
-      break;
-      case "passed":
-        changeToUnpassed.push(bookValue);
-        this.setState({unpassed: changeToUnpassed});
-      break;
+    if (includeSamePassedBook) {
+      //お渡し済である(passedである)場合
+      //自分以外を未お渡し済に定義
+      let unClicked = this.state.unpassed.filter((book) => {
+        return (book.id !== bookValue.id)
+      });
+      changeTounpassed.push(bookValue)
+      this.setState({passed: unClicked, unpassed: });
+    } else {
+      let unClicked = this.state.passed.filter((book) => {
+        return (book.id !== bookValue.id)
+      });
+      changeTounpassed.push(bookValue);
+      this.setState({passed: changeToPassed, unpassed: unClicked});
     }
   }
-
 
 
   render () {
@@ -55,18 +60,20 @@ class OrderPassed extends React.Component {
     let p_book;
     let i = 0;
 
-    i_book = this.props.i_books.map((book) => {
+    i_book = this.state.unpassed.map((book) => {
       return (
-        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, "yet")}}>
+        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, book.passed)}}>
           {book.name}
         </p>
       );
     })
 
-    p_book = this.props.p_books.map((book) => {
+    p_book = this.state.passed.map((book) => {
       return (
-        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, "passed")}}>
+        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, book.passed)}}>
+        <s>
           {book.name}
+        </s>
         </p>
       );
     })
