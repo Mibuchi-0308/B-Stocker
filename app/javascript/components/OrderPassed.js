@@ -39,16 +39,16 @@ class OrderPassed extends React.Component {
     if (includeSamePassedBook) {
       //お渡し済である(passedである)場合
       //自分以外を未お渡し済に定義
-      let unClicked = this.state.unpassed.filter((book) => {
-        return (book.id !== bookValue.id)
-      });
-      changeTounpassed.push(bookValue)
-      this.setState({passed: unClicked, unpassed: });
-    } else {
       let unClicked = this.state.passed.filter((book) => {
         return (book.id !== bookValue.id)
       });
-      changeTounpassed.push(bookValue);
+      changeToUnpassed.push(bookValue)
+      this.setState({passed: unClicked, unpassed: changeToUnpassed});
+    } else {
+      let unClicked = this.state.unpassed.filter((book) => {
+        return (book.id !== bookValue.id)
+      });
+      changeToPassed.push(bookValue);
       this.setState({passed: changeToPassed, unpassed: unClicked});
     }
   }
