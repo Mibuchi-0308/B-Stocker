@@ -9,21 +9,6 @@ class OrderPassed extends React.Component {
     unpassed: this.props.i_books,
   };}
 
-  verificationSameBook(bookValue, status) {
-    let includeSameBook;
-    switch (status) {
-      case "yet":
-        includeSameBook = this.state.passed.find((book) => {
-          return (book.id === bookValue.id)
-        });
-        if (includeSameBook) {
-
-        } else {
-
-        }
-      }
-  }
-
   handleClickChangeStatus(id, status) {
     let changeToPassed = this.state.passed.slice();
     let changeToUnpassed = this.state.unpassed.slice();
@@ -62,19 +47,23 @@ class OrderPassed extends React.Component {
 
     i_book = this.state.unpassed.map((book) => {
       return (
-        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, book.passed)}}>
-          {book.name}
-        </p>
+        <input
+          className="unpassedBook"
+          name="unpassedBooks[]"
+          key={book.id}
+          onClick={() => {this.handleClickChangeStatus(book.id, book.passed)}}
+          defaultValue={book.name} />
       );
     })
 
     p_book = this.state.passed.map((book) => {
       return (
-        <p key={book.id} onClick={() => {this.handleClickChangeStatus(book.id, book.passed)}}>
-        <s>
-          {book.name}
-        </s>
-        </p>
+        <input
+          className="passedBook"
+          name="passedBooks[]"
+          key={book.id}
+          onClick={() => {this.handleClickChangeStatus(book.id, book.passed)}}
+          defaultValue={`${book.name} お渡し済`} />
       );
     })
 
@@ -83,7 +72,7 @@ class OrderPassed extends React.Component {
         {i_book}
         {p_book}
         <p className="orderCount">合計{i}冊</p>
-        <button type="button" className="dammy">お渡し済にする</button>
+        <button type="button" className="dammy">変更する</button>
       </div>
     );
   }

@@ -2,6 +2,9 @@
 <%= form_tag("/customers/#{@customer.id}/deleteCustomer", id: "deleteCustomer_#{@customer.id}") do %>
 <% end %>
 
+<% form_tag("/customers/#{@customer.id}/updatePassedStatus", id: "updatePassedStatus_#{@customer.id}") do %>
+<% end %>
+
   <div class="customerInfoWrapper">
     <div class="customerInfomation">
       <p>名前</p>
