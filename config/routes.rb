@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   post "/createOrder" => "customers#createOrder"
   post "/customers/:customer_id/deleteCustomer" => "customers#delete"
   post "/customers/:customer_id/updateOrder" => "customers#updateOrder"
+  post "/customers/:customer_id/updatePassedStatus" => "customers#updatePassedStatus"
 
 
 end

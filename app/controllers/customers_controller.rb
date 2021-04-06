@@ -10,6 +10,7 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
     @orders = Order.where(user_id: params[:user_id]).order(created_at: :desc)
   end
 
+
   def create
     @hashed_books = []
     @books = Book.where(user_id: @currentUser.id)
@@ -20,6 +21,7 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
       @hashed_books.push(book)
     end
   end
+
 
   def createOrder
     #render用
@@ -88,6 +90,7 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
 
   end
 
+
   def info
     @customer = Customer.find_by(id: params[:customer_id])
     @orders = Order.where(customer_id: params[:customer_id])
@@ -114,6 +117,7 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
     end
   end
 
+
   def edit
     #基本的にnewアクションと同じ。
     @hashed_books = []
@@ -138,6 +142,7 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
     end
 
   end
+
 
   def updateOrder
     #render用
@@ -202,6 +207,7 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
     end
   end
 
+
   def delete
     @customer = Customer.find_by(id: params[:customer_id])
     @orders = Order.where(customer_id: @customer.id)
@@ -215,6 +221,34 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
       redirect_to("customers/#{@customer.id}/info")
     end
   end
+
+
+  def updatePassedStatus
+    @customer = Customer.find_by(id: params[:customer_id])
+
+    if params[:unpassedBooks]
+      params[:unpassedBooks].each do |unpassedBook|
+        book = Book.find_by(name: unpassedBook, user_id: @currentUser.id)
+        up_order = Order.find_by(customer_id: @customer.id, book_id: book.id)
+        up_order.passed = "yet"
+        up_order.save
+      end
+    end
+
+    if params[:passedBooks]
+      params[:passedBooks].each do |passedBook|
+        book = Book.find_by(name: passedBook, user_id: @currentUser.id)
+        p_order = Order.find_by(customer_id: @customer.id, book_id: book.id)
+        p_order.passed = "done"
+        p_order.save
+      end
+    end
+
+    flash[:notice] = "受け渡し情報を変更しました"
+    redirect_to("/customers/#{@customer.id}/info")
+
+  end
+
 
   #検証用
   def ensure_correct_user

@@ -2,7 +2,7 @@
 <%= form_tag("/customers/#{@customer.id}/deleteCustomer", id: "deleteCustomer_#{@customer.id}") do %>
 <% end %>
 
-<% form_tag("/customers/#{@customer.id}/updatePassedStatus", id: "updatePassedStatus_#{@customer.id}") do %>
+<%= form_tag("/customers/#{@customer.id}/updatePassedStatus", id: "updatePassedStatus_#{@customer.id}") do %>
 <% end %>
 
   <div class="customerInfoWrapper">
@@ -24,7 +24,8 @@
         orders: @orders,
         orderBooks: @orderBooks,
         i_books: @i_books,
-        p_books: @p_books
+        p_books: @p_books,
+        customer_id: @customer.id
       }) %>
     </div>
   </div>
