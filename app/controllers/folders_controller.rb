@@ -31,13 +31,16 @@ before_action :ensure_correct_book, {only: [:updateBook, :deleteBook]}
 
   def deleteFolder
     @folder = Folder.find_by(id: params[:folder_id])
-    @book = Book.find_by(folder_id: @folder.id)
-    if !@book && @folder.destroy
+    @books = Book.where(folder_id: @folder.id)
+    if !@books && @folder.destroy
       flash[:notice] = "フォルダが削除されました"
       redirect_to("/folders/#{@currentUser.id}/index")
+    elsif @books.delete_all && @folder.destroy
+      flash[:notice] = "フォルダと含まれていた書籍を削除しました"
+      redirect_to("folders/#{@currentUser.id}/index")
     else
-      flash[:notice] = "書籍の削除に失敗しました"
-      redirect_to("/folders/#{@folder.id}/books")
+      flash[:notice] = "フォルダの削除に失敗しました"
+      redirect_to("folders/#{@folder.id}/books")
     end
 
   end
