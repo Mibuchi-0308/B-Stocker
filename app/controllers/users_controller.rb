@@ -47,15 +47,22 @@ before_action :ensure_correct_user, {only: [:update, :delete]}
   end
 
   def update
+    #項目にかかわらず編集自体にパスワード再入力が必要になっている問題
     @user = User.find_by(id: params[:user_id])
-    @user.name = params[:name]
+    @user.name = params[:userName]
     @user.email = params[:email]
-    if @user.save
-      flash[:notice] = "ユーザー情報を編集しました"
-      redirect_to("/users/#{@user.id}")
+    if params[:newPassword1] == params[:newPassword2]
+      @user.password = params[:newPassword1]
+      if @user.save
+        flash[:notice] = "ユーザー情報を編集しました"
+        redirect_to("/users/#{@user.id}")
+      else
+        flash[:notice] = "ユーザー情報の編集の保存に失敗しました"
+        redirect_to("/users/#{@user.id}")
+      end
     else
       flash[:notice] = "ユーザー情報の編集に失敗しました。内容を確認してください"
-      render("users/#{@user.id}")
+      redirect_to("/users/#{@user.id}")
     end
   end
 

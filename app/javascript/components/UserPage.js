@@ -60,8 +60,7 @@ class UserPage extends React.Component {
           <p>メールアドレス</p>
           <input className="userInfo" defaultValue={this.props.email} readOnly/>
           <p>パスワード</p>
-          <input className="userInfo" defaultValue="secret" readOnly/>
-          {buttons}
+          <input className="userInfo" defaultValue="*****" readOnly/>
         </div>
       );
       break;
@@ -70,16 +69,21 @@ class UserPage extends React.Component {
       contents = (
         <div className="userContents">
           <p>ユーザーネーム</p>
-          <input className="userInfo" defaultValue={this.props.userName} />
+          <input className="userInfo" name="userName" defaultValue={this.props.userName} form={`updateUser_${this.props.userId}`}/>
           <p>メールアドレス</p>
-          <input className="userInfo" defaultValue={this.props.email} />
+          <input className="userInfo" name="email" defaultValue={this.props.email} form={`updateUser_${this.props.userId}`}/>
+          {/*パスワードにshow状態のvalueが入ったままになっている問題*/}
           <p>パスワード</p>
-          <input className="userInfo" type="password" />
+          <input className="userInfo" name="newPassword1" type="password" form={`updateUser_${this.props.userId}`}/>
           <p>パスワード(再確認)</p>
-          <input className="userInfo" type="password" />
-          {buttons}
+          <input className="userInfo" name="newPassword2" type="password" form={`updateUser_${this.props.userId}`}/>
         </div>
-      )
+      );
+      buttons = (
+        <div className="userContents-buttons">
+          <button className="edit" onClick={() => this.handleClickEdit()} form={`updateUser_${this.props.userId}`}>編集完了</button>
+        </div>
+      );
       break;
       case "delete":
       modal = (
@@ -108,6 +112,7 @@ class UserPage extends React.Component {
       <div>
         <div className="userContents-wrapper">
         {contents}
+        {buttons}
         </div>
         {modal}
       </div>
