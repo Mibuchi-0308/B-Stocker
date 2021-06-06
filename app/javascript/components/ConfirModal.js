@@ -5,6 +5,7 @@ class ConfirModal extends React.Component {
   super(props);
   this.state = {
     modal: true,
+    status: this.props.status,
   };}
 
   handleClickOpen() {
@@ -18,6 +19,8 @@ class ConfirModal extends React.Component {
   render () {
     let modal;
     let visible;
+    let contents;
+
     let buttonClassName;
     let buttonName;
     let doing;
@@ -35,6 +38,29 @@ class ConfirModal extends React.Component {
       break;
     }
 
+    if (!this.state.needPassword) {
+      contents = (
+        <div>
+          <div className="confirModal-contents">
+            <p>{this.props.text}を</p>
+            <p>{doing}</p>
+          </div>
+          <div className="confirModal-button">
+            <button onClick={() => this.handleClickClose()} className="quit" type="button">
+              戻る
+            </button>
+            <button className={buttonClassName} id={this.props.Id} type="submit" form={this.props.form}>
+              {buttonName}
+            </button>
+          </div>
+        </div>
+      );
+    } else {
+      contents = (
+        <p>エラー表示！stateのstatus関係のエラーです</p>
+      );
+    }
+
     if (this.state.modal) {
       modal = (
         <div>
@@ -47,18 +73,7 @@ class ConfirModal extends React.Component {
                    onClick={() => {this.handleClickClose()}}
                 />
               </div>
-              <div className="confirModal-contents">
-                <p>{this.props.text}を</p>
-                <p>{doing}</p>
-              </div>
-              <div className="confirModal-button">
-                <button onClick={() => this.handleClickClose()} className="quit" type="button">
-                  戻る
-                </button>
-                <button className={buttonClassName} id={this.props.Id} type="submit" form={this.props.form}>
-                  {buttonName}
-                </button>
-              </div>
+              {contents}
             </div>
           </div>
         </div>
