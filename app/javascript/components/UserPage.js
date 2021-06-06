@@ -7,6 +7,7 @@ class UserPage extends React.Component {
   this.state = {
     mode: "show",
     checkedPass: false,
+    modal: false,
   };
   }
 
@@ -16,11 +17,11 @@ class UserPage extends React.Component {
   }
 
   handleClickDelete() {
-    this.setState({mode: "delete"});
+    this.setState({modal: true});
   }
 
   handleClickShow() {
-    this.setState({mode: "show"});
+    this.setState({mode: "show", modal: false});
   }
 
   render() {
@@ -52,7 +53,6 @@ class UserPage extends React.Component {
 
     switch (this.state.mode) {
       case "show":
-      modal = ""
       contents = (
         <div className="userContents">
           <p>ユーザーネーム</p>
@@ -65,7 +65,6 @@ class UserPage extends React.Component {
       );
       break;
       case "edit":
-      modal = ""
       contents = (
         <div className="userContents">
           <p>ユーザーネーム</p>
@@ -85,28 +84,32 @@ class UserPage extends React.Component {
         </div>
       );
       break;
-      case "delete":
+    }
+
+    if (this.state.modal) {
       modal = (
         <div className="deleteUserModal-wrapper">
           <div className="deleteUserModal">
-            <div className="deleteUserModal-Header">
-              <p>確認</p>
-            </div>
-            <div className="deleteUserModal-Contents">
-              <p>ユーザー名:{this.props.UserName}様
-                <br>アカウントを削除します。</br>
-                <br>全ての情報が消えますがよろしいですか？(フォルダ情報、書籍情報、顧客情報等)</br>
-              </p>
-            </div>
-            <div className="deleteUserModal-Buttons">
-              <button type="button" onClick={() => handleClickShow()}>戻る</button>
-              <button className="delete" type="submit" form={`deleteUser_${this.props.userId}`}>アカウント削除</button>
+            <div className="deleteUserModal-inner">
+              <div className="deleteUserModal-header">
+                <p>確認</p>
+              </div>
+              <div className="deleteUserModal-contents">
+                <p>ユーザー名:{this.props.userName}様 の</p>
+                <p>アカウントを削除します。</p>
+                <p>全ての情報が削除されますがよろしいですか？</p>
+                <p className="example">(フォルダ情報、書籍情報、顧客情報等)</p>
+                <input className="password" name="userPassword" type="password" form={`deleteUser_${this.props.userId}`} />
+              </div>
+              <div className="deleteUserModal-button">
+                <button  className="OK" type="button" onClick={() => this.handleClickShow()}>戻る</button>
+                <button className="delete" type="submit" form={`deleteUser_${this.props.userId}`}>アカウント削除</button>
+              </div>
             </div>
           </div>
         </div>
-      )
+      );
     }
-
 
     return (
       <div>
