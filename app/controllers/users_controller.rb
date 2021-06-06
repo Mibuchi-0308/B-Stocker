@@ -41,7 +41,8 @@ before_action :ensure_correct_user, {only: [:update, :delete]}
   end
 
   def logout
-    session[:user_id] = nil
+    #reset_sessionはやりすぎかも？
+    reset_session
     flash[:notice] ="ログアウトしました"
     redirect_to("/")
   end
@@ -72,16 +73,18 @@ before_action :ensure_correct_user, {only: [:update, :delete]}
     @books = Book.where(user_id: @user.id)
     @customers = Customer.where(user_id: @user.id)
     @orders = Order.where(user_id: @user.id)
-    if @user
+    if @user.password == params[:userPassword]
       @folders.destroy_all
       @books.destroy_all
       @customers.destroy_all
       @orders.destroy_all
       @user.destroy
+      reset_session
       flash[:notice] = "#{@user.name}様の情報を全て削除しました"
       redirect_to("/")
     else
-      flash[:notice] = "ユーザーを定義できませんでした。なんらかの問題があります"
+      flash[:notice] = "パスワードが間違っています"
+      redirect_to("/users/#{@user.id}")
     end
   end
 
