@@ -1,8 +1,8 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "modal";
 @import "buttons";
-
 
 .userContents-wrapper {
   text-align: center;
@@ -33,4 +33,37 @@
       font-size: 13px;
     }
   }
+}
+
+.deleteUserModal {
+  @include modal;
+}
+.deleteUserModal-inner {
+  @include modal-inner(600px);
+}
+
+.deleteUserModal-header {
+  @include modal-header(#56B55A);
+  p {
+    color: white;
+  }
+  img {
+    margin-left: 220px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.deleteUserModal-contents {
+  @include modal-contents;
+  p {
+    font-size: 25px;
+  }
+  .example {
+    font-size: 20px;
+  }
+}
+
+.deleteUserModal-button {
+  @include modal-button;
 }
