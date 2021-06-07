@@ -160,6 +160,8 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
     @customer.name = params[:customerName]
     @customer.tel = params[:tel]
 
+    @beforeOrders = Order.where(customer_id: @customer.id)
+
     flag = "default"
     orders = []
     i = 0;
@@ -174,36 +176,48 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
         i += 1
       end
       flag = "ok"
-    else
-      flash[:notice] = "書籍の登録が空です"
-      render("/customers/edit")
     end
 
     if flag === "ok"
       if @customer.save
         orders.each do |order|
           orderBook = Book.find_by(name: order[:name], user_id: @currentUser.id)
-          @order = Order.new(
-            amount: order[:amount].to_i,
-            #(顧客IDがまだ生成されてないのが問題。)←saveされた時に生成される。解決。
-            customer_id: @customer.id,
-            book_id: orderBook.id,
-            user_id: @currentUser.id
-          )
-          if !@order.save
-            flash[:notice] = "客注書籍に問題があります"
-            break
-            render("/customers/#{@customer.id}/edit")
-          else
+          #以前の同名データを抽出
+          beforeOrder = @beforeOrders.find_by(book_id: orderBook.id)
+          if beforeOrder
+            #新しくオーダーを順番に登録
+            @order = Order.new(
+              amount: order[:amount].to_i,
+              #(顧客IDがまだ生成されてないのが問題。)←saveされた時に生成される。解決。
+              customer_id: @customer.id,
+              book_id: orderBook.id,
+              user_id: @currentUser.id,
+              passed: beforeOrder.passed,
+            )
+            beforeOrder.destroy
             @order.save
+            flash[:notice] = "顧客の登録を完了しました。以前のデータは削除されています"
+          else
+            @order = Order.new(
+              amount: order[:amount].to_i,
+              #(顧客IDがまだ生成されてないのが問題。)←saveされた時に生成される。解決。
+              customer_id: @customer.id,
+              book_id: orderBook.id,
+              user_id: @currentUser.id,
+              passed: "yet",
+            )
+            @order.save
+            flash[:notice] = "顧客の登録を完了しました。"
           end
         end
-        flash[:notice] = "顧客の登録を完了しました"
-        redirect_to("/menu")
+        redirect_to("/customers/#{@customer.id}/info")
       else
         flash[:notice] = "顧客情報の内容に問題があります"
-        render("customers/#{@customer.id}/edit")
+        redirect_to("/customers/#{@customer.id}/edit")
       end
+    else
+      flash[:notice] = "書籍の登録が空です。顧客削除は削除ボタンからお願いします"
+      redirect_to("/customers/#{@customer.id}/edit")
     end
   end
 
@@ -246,7 +260,6 @@ before_action :ensure_correct_customer, {only: [:info, :edit, :delete, :updateOr
 
     flash[:notice] = "受け渡し情報を変更しました"
     redirect_to("/customers/#{@customer.id}/info")
-
   end
 
 
