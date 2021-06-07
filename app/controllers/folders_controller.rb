@@ -37,7 +37,7 @@ before_action :ensure_correct_book, {only: [:updateBook, :deleteBook]}
       redirect_to("/folders/#{@currentUser.id}/index")
     elsif @books.delete_all && @folder.destroy
       flash[:notice] = "フォルダと含まれていた書籍を削除しました"
-      redirect_to("folders/#{@currentUser.id}/index")
+      redirect_to("/folders/#{@currentUser.id}/index")
     else
       flash[:notice] = "フォルダの削除に失敗しました"
       redirect_to("folders/#{@folder.id}/books")
