@@ -97,6 +97,7 @@ class EditCustomersOrder extends React.Component {
 
 
   render () {
+    let i = 0;
     let bookValue;
     let bookList;
 
@@ -130,6 +131,7 @@ class EditCustomersOrder extends React.Component {
 
     addListObject = addList.map((book)=> {
       bookValue = book.name;
+      i += 1;
       return (
         <div className="addListValue" key={book.id}>
           <input
@@ -138,14 +140,14 @@ class EditCustomersOrder extends React.Component {
             onClick={() => {this.handleClickRemove(book.id)}}
             readOnly
             name="bookName[]"
-            id={book.name + "-id:" + book.id}
+            id={book.name + "-id:" + book.id + i}
             />
           <input
             className="orderBookAmount"
             value={book.amount}
             readOnly
             name="bookAmount[]"
-            id={book.name + "-amount"}
+            id={book.name + "-amount" + book.id + i}
           />
         </div>
       );
