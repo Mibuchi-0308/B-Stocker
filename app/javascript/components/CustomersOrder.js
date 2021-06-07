@@ -7,7 +7,7 @@ class CustomersOrder extends React.Component {
       addList: Array(),
       message: "右の希望書籍をクリックしてください。",
       selectedFolder: "",
-      searchedBooks: this.props.books
+      searchedBooks: this.props.books,
     };
   }
 
